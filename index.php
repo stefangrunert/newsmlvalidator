@@ -21,13 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body ng-app="nmlv" ng-controller="nmlvCtrl">
 
 <h1 class="leftElement"><b>3-Step</b> NewsML-G2 + XHTML5 + Microdata Validator</h1>
+
 <div id="intro" class="leftElement">
     <b>
-       <a href="" ng-click="loadExample('01', true)">load valid NewsML-G2 example</a> or
+        <a href="" ng-click="loadExample('01', true)">load valid NewsML-G2 example</a> or
         <a href="" ng-click="loadExample('01', false)">load invalid NewsML-G2 example</a>
     </b>
     <br/>
-    ...or paste NewsML-G2 document, containing XHTML5+Microdata within the contentSet/inlineXMK into the form below:
+    ...or paste NewsML-G2 document, containing XHTML5+Microdata within the contentSet/inlineXML into the form below:
 </div>
 
 <div class="leftElement">
@@ -42,11 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div ng-repeat="validation in validations">
     <div class="validationResult {{validation.active ? 'active' : 'inactive'}} leftElement">
-        <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
+        <div
+            class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
         <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
         <h4>{{validation.name}}</h4>
+
         <div ng-repeat="validationResult in validation.res.validationResults">
             <span ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
+
             <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
                 passed: {{validationResult.passed}}
             </div>
@@ -81,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             or even QA.
         </i>
     </p>
+
     <p>
         <b>How it works:</b> The validation is performed in three independent steps:
     </p>
@@ -91,14 +96,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             using the API of <a href="https://validator.nu" target="_blank">https://validator.nu</a>
         </li>
         <li>Validation of microdata, embedded in the HTML document, (ab)using
-            <a href="http://linter.structured-data.org" target="_blank">http://linter.structured-data.org</a></li>
+            <a href="http://linter.structured-data.org" target="_blank">http://linter.structured-data.org</a>
+        </li>
     </ol>
     <p>
         <b>Validation API:</b> Validation without using the graphical interface can be done by sending a POST request,
         containing the NewsML-G2 document in the POST body to the same URL as this page.
     </p>
 
-    <p><b>Alternative validation services:</b> You can choose between a couple of services to validate HTML5 and Microdata.
+    <p><b>Alternative validation services:</b> You can choose between a couple of services to validate HTML5 and
+        Microdata.
         Please remember to add the right doctype definition to your XHTML document to make the validator recognize
         this is a polyglot HTML5 document (&lt;!DOCTYPE html&gt;)
     <ul>
@@ -107,13 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <a href="http://validator.w3.org/" target="_blank">The W3C Markup Validation Service</a>,
             <a href="https://validator.nu" target="_blank">validator.nu</a>
         </li>
-        </li>
         <li>
             <b>Microdata validation</b>
-            <a href="https://developers.google.com/structured-data/testing-tool/" target="_blank">Google Testing Tool</a>,
+            <a href="https://developers.google.com/structured-data/testing-tool/" target="_blank">Google Testing
+                Tool</a>,
             <a href="https://webmaster.yandex.com/microtest.xml" target="_blank">Yandex Structured Data Validator</a>,
-            <a href="http://www.bing.com/toolbox/markup-validator" target="_blank">Bing Markup Validator (requires login)</a>
-        </li>
+            <a href="http://www.bing.com/toolbox/markup-validator" target="_blank">Bing Markup Validator (requires
+                login)</a>
         </li>
     </ul>
     </p>
@@ -121,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <b>Want to Contribute?</b>
         Feel free to checkout the project from GitHub, improve it and send me a pull request.
     </p>
+
     <p><i>&copy; Stefan Grunert, 2015</i></p>
 </div>
 
