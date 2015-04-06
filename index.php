@@ -123,7 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 login)</a>
         </li>
     </ul>
-    </p>
     <p>
         <b>Want to Contribute?</b>
         Feel free to checkout the project from GitHub, improve it and send me a pull request.
