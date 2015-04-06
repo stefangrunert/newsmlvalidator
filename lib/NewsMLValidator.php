@@ -1,10 +1,4 @@
 <?php
-/**
- * Disclaimer: The only purpose of this project is to give a proof of concept about the possibility to validate.
- * (X)HTML5 + Microdata documents embedded in NewsML-G2
- *
- * @author Stefan Grunert, stefan@aptoma.com
- */
 require "NewsMLValidationResult.php";
 
 /**
@@ -15,26 +9,23 @@ require "NewsMLValidationResult.php";
  */
 class NewsMLValidator
 {
+    /**
+     * @param string $newsML NewsML-G2 document
+     * @param string|null $validationRequest
+     * @return array
+     */
     public function run($newsML, $validationRequest = null)
     {
-
         $validations = array();
-
-
         if (empty($validationRequest) || $validationRequest == 'NewsML') {
             $validations[] = $this->validateNewsML($newsML);
-            if ($validationRequest == 'NewsML') {
-                //return $validations;
-            }
         }
-
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($newsML);
         $xp = new DOMXPath($dom);
         $xp->registerNamespace('n', 'http://iptc.org/std/nar/2006-10-01/');
         $xp->registerNamespace('h', 'http://www.w3.org/1999/xhtml');
         $newsItems = $xp->query('//n:newsItem');
-
         if (empty($validationRequest) || $validationRequest == 'HTML') {
             foreach ($newsItems as $newsItem) {
                 $guid = $newsItem->getAttribute('guid');
@@ -42,11 +33,7 @@ class NewsMLValidator
                 $htmlCode = '<!DOCTYPE html>' . $dom->saveXML($htmlElement);
                 $validations[] = $this->validateHTML($htmlCode, $guid);
             }
-            if ($validationRequest == 'HTML') {
-                //return $validations;
-            }
         }
-
         if (empty($validationRequest) || $validationRequest == 'Microdata') {
             foreach ($newsItems as $newsItem) {
                 $guid = $newsItem->getAttribute('guid');
@@ -54,11 +41,7 @@ class NewsMLValidator
                 $htmlCode = '<!DOCTYPE html>' . $dom->saveXML($htmlElement);
                 $validations[] = $this->validateMicrodata($htmlCode, $guid);
             }
-            if ($validationRequest == 'HTML') {
-                //return $validations;
-            }
         }
-
         return $validations;
     }
 
@@ -91,7 +74,7 @@ class NewsMLValidator
     /**
      * Validates HTML documents using validator.nu's API
      *
-     * @param $html
+     * @param string $html HTML document
      * @return NewsMLValidationResult
      */
     private function validateHTML($html, $guid)
@@ -116,7 +99,7 @@ class NewsMLValidator
     /**
      * Validate microdata "mis"-using linter.structured-data.org
      *
-     * @param $html
+     * @param string $html HTML document
      * @return NewsMLValidationResult
      */
     private function validateMicrodata($html, $guid)

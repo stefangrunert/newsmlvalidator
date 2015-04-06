@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NewsML + XHTML5 + Microdata Validator</title>
+    <title>NewsML + Polyglot HTML5 + Microdata Validator</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body ng-app="nmlv" ng-controller="nmlvCtrl">
 
-<h1 class="leftElement"><b>3-Step</b> NewsML-G2 + XHTML5 + Microdata Validator</h1>
+<h1 class="leftElement"><b>3-Step Validator</b> NewsML-G2 <span>-&gt;</span> Polyglot HTML5 <span>-&gt;</span> Microdata
+</h1>
 
 <div id="intro" class="leftElement">
     <b>
@@ -28,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a href="" ng-click="loadExample('01', false)">load invalid NewsML-G2 example</a>
     </b>
     <br/>
-    ...or paste NewsML-G2 document, containing XHTML5+Microdata within the contentSet/inlineXML into the form below:
+    ...or paste NewsML-G2 document, containing polyglot HTML5 + Microdata within the contentSet/inlineXML into the form
+    below:
 </div>
 
 <div class="leftElement">
@@ -39,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <br/>
+
 <h4>Validation Results</h4>
 
 <div ng-repeat="validation in validations">
@@ -47,23 +50,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
         <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
         <h4>{{validation.name}}</h4>
+        <div class="validationDetails {{validation.id}}">
+            <div ng-repeat="validationResult in validation.res.validationResults">
+                <span ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
 
-        <div ng-repeat="validationResult in validation.res.validationResults">
-            <span ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
+                <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
+                    passed: {{validationResult.passed}}
+                </div>
+                <div class="message">
+                    {{validationResult.message}}
+                </div>
 
-            <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
-                passed: {{validationResult.passed}}
-            </div>
-            <div class="message">
-                {{validationResult.message}}
             </div>
         </div>
         <div class="validationInfo">
             <div ng-if="validation.name == 'NewsML'">
-                NewsML-G2 validation uses
+                NewsML-G2 validation is using
                 <a href="http://dev.iptc.org/G2-Standards" class="disabled" target="_blank">IPTC XSD schema</a>
             </div>
-            <div ng-if="validation.name == 'HTML'">
+            <div ng-if="validation.name == 'Polyglot HTML5'">
                 HTML validation provided by <a href="https://validator.nu" target="_blank">https://validator.nu</a>
             </div>
             <div ng-if="validation.name == 'Microdata'">
@@ -76,23 +81,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div id="info" class="rightElement">
     <p>
-        <b>Disclaimer:</b>
-        <i>
-            The purpose of this project is showing how validating
-            (X)HTML5 + Microdata documents embedded in NewsML-G2 can be done.
-            <br/>
-            Be aware, the implementation is very minimalistic. There is currently nothing like error handling
-            or even QA.
-        </i>
-    </p>
-
-    <p>
         <b>How it works:</b> The validation is performed in three independent steps:
     </p>
     <ol>
-        <li>NewsML-G2 validation based on the XSD provided by IPTC.</li>
+        <li>NewsML-G2 validation based on the XSD provided by <a href="http://iptc.org/" target="_blank">IPTC</a>.</li>
         <li>
-            HTML validation of the inlineXML embedded HTML document withing the NewsML-G2 contentSet,
+            <a href="http://www.w3.org/TR/html-polyglot/" target="_blank">Polyglot HTML5</a> validation of the inlineXML
+            embedded HTML document withing the NewsML-G2 contentSet,
             using the API of <a href="https://validator.nu" target="_blank">https://validator.nu</a>
         </li>
         <li>Validation of microdata, embedded in the HTML document, (ab)using
@@ -102,6 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p>
         <b>Validation API:</b> Validation without using the graphical interface can be done by sending a POST request,
         containing the NewsML-G2 document in the POST body to the same URL as this page.
+        <br/>
+        The API responds with HTTP status code 200 for valid documents, and 400 for invalid ones. The response body
+        contains parsable JSON serialized info/error messages
     </p>
 
     <p><b>Alternative validation services:</b> You can choose between a couple of services to validate HTML5 and
@@ -110,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         this is a polyglot HTML5 document (&lt;!DOCTYPE html&gt;)
     <ul>
         <li>
-            <b>HTML5 validation</b>
+            <b>Polyglot HTML5 validation</b>
             <a href="http://validator.w3.org/" target="_blank">The W3C Markup Validation Service</a>,
             <a href="https://validator.nu" target="_blank">validator.nu</a>
         </li>
@@ -125,13 +123,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </ul>
     <p>
         <b>Want to Contribute?</b>
-        Feel free to checkout the project from GitHub, improve it and send me a pull request.
+        Feel free to checkout the project from <a href="https://github.com/arasix/newsmlvalidator" target="_blank">GitHub</a>,
+        improve it and send me a pull request.
     </p>
 
-    <p><i>&copy; Stefan Grunert, 2015</i></p>
+    <p>
+        <b>Disclaimer:</b>
+        <i>
+            The purpose of this project is showing how validating
+            (X)HTML5 + Microdata documents embedded in NewsML-G2 can be done.
+            <br/>
+            Be aware, the implementation is very minimalistic. There is currently nothing like error handling
+            or even QA.
+        </i>
+    </p>
+
+    <p><i>&copy; <a href="mailto:stefan@aptoma.com">Stefan Grunert, 2015</a></i></p>
 </div>
 
 </body>
 </html>
-
-

@@ -22,18 +22,20 @@ body {
     font-family: Ubuntu;
 }
 
-a {
-    text-decoration: underline;
-}
-
 h1 {
     font-size:30px;
     color: #3c546f;
     margin-bottom: 24px;
+    display: inline;
 }
 
 h1 b {
-    font-size: 48px;
+    font-size: 42px;
+    margin-right: 12px;
+}
+
+h1 span {
+    opacity: .4;
 }
 
 #info {
@@ -102,6 +104,10 @@ h1 b {
 
 #intro b {
     font-size: 24px;
+}
+
+#intro a {
+    text-decoration: underline;
 }
 
 .validationResult {
