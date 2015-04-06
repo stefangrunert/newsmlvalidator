@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(sDGTilo5QRsfWu6Yc11AXg.woff2) format('woff2'), url(_xyN3apAT_yRRDeqB3sPRg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(0ihfXUL2emPh0ROJezvraFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(0ihfXUL2emPh0ROJezvraD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url(WB6rgjTg_oRfj6mlXZJbb_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2'), url(kbP_6ONYVgE-bLa9ZRbvvvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+body {
+    margin: 40px;
+    font-family: Ubuntu;
+
+}
+
+h1 {
+    font-size:30px;
+    color: #3c546f;
+    margin-bottom: 24px;
+}
+
+#info {
+    position: absolute;
+    width: 32%;
+    top: 24px;
+    right: 26px;
+    min-height: 90%;
+    background-color: rgba(60, 84, 111, 0.05);
+    padding: 24px;
+    line-height: 26px;
+    color: #3c546f;
+}
+
+
+.leftElement {
+    width: 65%;
+}
+
+@media (max-width: 1000px) {
+    .leftElement {
+        width: 100%;
+    }
+
+    #info {
+        width: 100%;
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
+
+}
+
+#newsmlPayload {
+    width: 100%;
+    height: 300px;
+    transition: 1s;
+    transition-property: height;
+    background-color: #F5F5F5;
+    border: solid #CCC 1px;
+    padding: 12px 12px 1px 12px;
+    margin-bottom: 6px;
+}
+
+#newsmlPayload.active {
+    height: 120px;
+    transition: 1s;
+    transition-property: height;
+    color: #888;
+}
+
+#submitValidation {
+    width: 200px;
+    height: 40px;
+}
+
+#clearForm {
+    width: 120px;
+    height: 40px;
+}
+
+#intro {
+    margin: 3px 0 24px 0;
+}
+
+.validationResult {
+    margin: 12px 0;
+    background-color: rgba(60, 84, 111, 0.05);
+    padding: 12px;
+}
+.validationResult.inactive {
+    opacity: .3;
+}
+
+.loader {
+    width:31px;
+    height: 31px;
+    background-image: url("ajax-loader2.gif");
+    background-size: contain;
+
+}
+
+.validationResult .status {
+    color: green;
+}
+.validationResult .status.invalid {
+    color: #c50000;
+}
+
+.validationResult .validationInfo {
+    padding: 6px;
+    color: #777;
+}
