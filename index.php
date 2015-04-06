@@ -20,11 +20,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body ng-app="nmlv" ng-controller="nmlvCtrl">
 
+<h1 class="leftElement"><b>3-Step</b> NewsML-G2 + XHTML5 + Microdata Validator</h1>
+<div id="intro" class="leftElement">
+    <b>
+       <a href="" ng-click="loadExample('01', true)">load valid NewsML-G2 example</a> or
+        <a href="" ng-click="loadExample('01', false)">load invalid NewsML-G2 example</a>
+    </b>
+    <br/>
+    ...or paste NewsML-G2 document, containing XHTML5+Microdata within the contentSet/inlineXMK into the form below:
+</div>
+
+<div class="leftElement">
+    <textarea ng-model="payload" id="newsmlPayload" class="{{validationActive ? 'active' : 'inactive'}}"></textarea>
+    <br/>
+    <button ng-click="validate()" id="submitValidation" class="{{!payload ? 'disabled':''}}">Validate Document</button>
+    <button ng-if="payload" ng-click="clear()" id="clearForm">Clear Form</button>
+</div>
+
+<br/>
+<h4>Validation Results</h4>
+
+<div ng-repeat="validation in validations">
+    <div class="validationResult {{validation.active ? 'active' : 'inactive'}} leftElement">
+        <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
+        <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
+        <h4>{{validation.name}}</h4>
+        <div ng-repeat="validationResult in validation.res.validationResults">
+            <span ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
+            <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
+                passed: {{validationResult.passed}}
+            </div>
+            <div class="message">
+                {{validationResult.message}}
+            </div>
+        </div>
+        <div class="validationInfo">
+            <div ng-if="validation.name == 'NewsML'">
+                NewsML-G2 validation uses
+                <a href="http://dev.iptc.org/G2-Standards" class="disabled" target="_blank">IPTC XSD schema</a>
+            </div>
+            <div ng-if="validation.name == 'HTML'">
+                HTML validation provided by <a href="https://validator.nu" target="_blank">https://validator.nu</a>
+            </div>
+            <div ng-if="validation.name == 'Microdata'">
+                Microdata validation provided by
+                <a href="http://linter.structured-data.org" target="_blank">http://linter.structured-data.org</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="info" class="rightElement">
     <p>
         <b>Disclaimer:</b>
         <i>
-            The only purpose of this project is showing how validating
+            The purpose of this project is showing how validating
             (X)HTML5 + Microdata documents embedded in NewsML-G2 can be done.
             <br/>
             Be aware, the implementation is very minimalistic. There is currently nothing like error handling
@@ -72,57 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         Feel free to checkout the project from GitHub, improve it and send me a pull request.
     </p>
     <p><i>&copy; Stefan Grunert, 2015</i></p>
-
-
-</div>
-
-<h1 class="leftElement"><b>3-Step</b> NewsML-G2 + XHTML5 + Microdata Validator</h1>
-
-
-<div id="intro" class="leftElement">Paste NewsML-G2 document, containing XHTML5+Microdata in the contentSet/inlineXMK
-    into the form below
-    ... or <a href="#" ng-click="loadExample('01', true)">load valid example</a> ... or
-    <a href="#" ng-click="loadExample('01', false)">load invalid example</a>
-</div>
-
-<div class="leftElement">
-    <textarea ng-model="payload" id="newsmlPayload" class="{{validationActive ? 'active' : 'inactive'}}"></textarea>
-    <br/>
-    <button ng-click="validate()" id="submitValidation">Validate Document</button>
-    <button ng-click="clear()" id="clearForm">Clear Form</button>
-</div>
-
-<br/>
-<h4>Validation Results</h4>
-
-<div ng-repeat="validation in validations">
-    <div class="validationResult {{validation.active ? 'active' : 'inactive'}} leftElement">
-        <b>{{validation.name}}</b>
-
-        <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
-        <div ng-repeat="validationResult in validation.res.validationResults">
-            valdated {{validationResult.guid}}
-            <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
-                passed: {{validationResult.passed}}
-            </div>
-            <div class="message">
-                {{validationResult.message}}
-            </div>
-        </div>
-        <div class="validationInfo">
-            <div ng-if="validation.name == 'NewsML'">
-                NewsML-G2 validation uses
-                <a href="http://dev.iptc.org/G2-Standards" class="disabled" target="_blank">IPTC XSD schema</a>
-            </div>
-            <div ng-if="validation.name == 'HTML'">
-                HTML validation provided by <a href="https://validator.nu" target="_blank">https://validator.nu</a>
-            </div>
-            <div ng-if="validation.name == 'Microdata'">
-                Microdata validation provided by
-                <a href="http://linter.structured-data.org" target="_blank">http://linter.structured-data.org</a>
-            </div>
-        </div>
-    </div>
 </div>
 
 </body>

@@ -18,9 +18,12 @@
 }
 
 body {
-    margin: 40px;
+    margin: 40px 10%;
     font-family: Ubuntu;
+}
 
+a {
+    text-decoration: underline;
 }
 
 h1 {
@@ -29,11 +32,15 @@ h1 {
     margin-bottom: 24px;
 }
 
+h1 b {
+    font-size: 48px;
+}
+
 #info {
     position: absolute;
     width: 32%;
     top: 24px;
-    right: 26px;
+    right: 3%;
     min-height: 90%;
     background-color: rgba(60, 84, 111, 0.05);
     padding: 24px;
@@ -41,23 +48,20 @@ h1 {
     color: #3c546f;
 }
 
-
 .leftElement {
     width: 65%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .leftElement {
         width: 100%;
     }
-
     #info {
         width: 100%;
         position: relative;
         left: 0px;
         top: 0px;
     }
-
 }
 
 #newsmlPayload {
@@ -72,7 +76,7 @@ h1 {
 }
 
 #newsmlPayload.active {
-    height: 120px;
+    height: 90px;
     transition: 1s;
     transition-property: height;
     color: #888;
@@ -83,6 +87,10 @@ h1 {
     height: 40px;
 }
 
+#submitValidation.disabled {
+   opacity: .4;
+}
+
 #clearForm {
     width: 120px;
     height: 40px;
@@ -90,6 +98,10 @@ h1 {
 
 #intro {
     margin: 3px 0 24px 0;
+}
+
+#intro b {
+    font-size: 24px;
 }
 
 .validationResult {
@@ -102,16 +114,18 @@ h1 {
 }
 
 .loader {
-    width:31px;
-    height: 31px;
-    background-image: url("ajax-loader2.gif");
+    width:64px;
+    height: 64px;
+    background-image: url("loader.gif");
     background-size: contain;
-
+    float: left;
+    margin: 0 12px 6px 0;
 }
 
 .validationResult .status {
     color: green;
 }
+
 .validationResult .status.invalid {
     color: #c50000;
 }
@@ -119,4 +133,20 @@ h1 {
 .validationResult .validationInfo {
     padding: 6px;
     color: #777;
+}
+
+.resicon {
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    float: left;
+    margin: 0 12px 6px 0;
+}
+
+.resicon.passed {
+    background-image: url("done.png");
+}
+
+.resicon.failed {
+    background-image: url("error.png");
 }
