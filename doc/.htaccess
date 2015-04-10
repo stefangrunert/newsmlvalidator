@@ -1,0 +1,5 @@
+Satisfy Any
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)(\.html)$ index.php?file=$1.md [QSA,L]

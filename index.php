@@ -5,28 +5,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 };
 ?>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>NewsML + Polyglot HTML5 + Microdata Validator</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
+    <meta charset="utf-8"/>
+    <link href="lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/styles.css"/>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="lib/vendor/jquery/jquery.min.js"></script>
+    <script src="lib/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="lib/vendor/angular/angular.min.js"></script>
     <script src="lib/newsmlvalidator.js"></script>
 </head>
-<body ng-app="nmlv" ng-controller="nmlvCtrl">
+<body data-ng-app="nmlv" data-ng-controller="nmlvCtrl">
 
-<h1 class="leftElement"><b>3-Step Validator</b> NewsML-G2 <span>-&gt;</span> Polyglot HTML5 <span>-&gt;</span> Microdata
+<h1 class="main-headline leftElement"><b>3-Step Validator</b> NewsML-G2 <span>-&gt;</span> Polyglot HTML5 <span>-&gt;</span> Microdata
 </h1>
 
 <div id="intro" class="leftElement">
     <b>
-        <a href="" ng-click="loadExample('01', true)">load valid NewsML-G2 example</a> or
-        <a href="" ng-click="loadExample('01', false)">load invalid NewsML-G2 example</a>
+        <a href="" data-ng-click="loadExample('01', true)">load valid NewsML-G2 example</a> or
+        <a href="" data-ng-click="loadExample('01', false)">load invalid NewsML-G2 example</a>
     </b>
     <br/>
     ...or paste NewsML-G2 document, containing polyglot HTML5 + Microdata within the contentSet/inlineXML into the form
@@ -34,25 +32,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <div class="leftElement">
-    <textarea ng-model="payload" id="newsmlPayload" class="{{validationActive ? 'active' : 'inactive'}}"></textarea>
+    <textarea data-ng-model="payload" id="newsmlPayload" class="{{validationActive ? 'active' : 'inactive'}}"></textarea>
     <br/>
-    <button ng-click="validate()" id="submitValidation" class="{{!payload ? 'disabled':''}}">Validate Document</button>
-    <button ng-if="payload" ng-click="clear()" id="clearForm">Clear Form</button>
+    <button data-ng-click="validate()" id="submitValidation" class="{{!payload ? 'disabled':''}}">Validate Document</button>
+    <button data-ng-if="payload" data-ng-click="clear()" id="clearForm">Clear Form</button>
 </div>
 
 <br/>
 
 <h4>Validation Results</h4>
 
-<div ng-repeat="validation in validations">
+<div data-ng-repeat="validation in validations">
     <div class="validationResult {{validation.active ? 'active' : 'inactive'}} leftElement">
         <div
             class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
         <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
         <h4>{{validation.name}}</h4>
         <div class="validationDetails {{validation.id}}">
-            <div ng-repeat="validationResult in validation.res.validationResults">
-                <span ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
+            <div data-ng-repeat="validationResult in validation.res.validationResults">
+                <span data-ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
 
                 <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
                     passed: {{validationResult.passed}}
@@ -64,14 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
         <div class="validationInfo">
-            <div ng-if="validation.name == 'NewsML'">
+            <div data-ng-if="validation.name == 'NewsML'">
                 NewsML-G2 validation is using
                 <a href="http://dev.iptc.org/G2-Standards" class="disabled" target="_blank">IPTC XSD schema</a>
             </div>
-            <div ng-if="validation.name == 'Polyglot HTML5'">
+            <div data-ng-if="validation.name == 'Polyglot HTML5'">
                 HTML validation provided by <a href="https://validator.nu" target="_blank">https://validator.nu</a>
             </div>
-            <div ng-if="validation.name == 'Microdata'">
+            <div data-ng-if="validation.name == 'Microdata'">
                 Microdata validation provided by
                 <a href="http://linter.structured-data.org" target="_blank">http://linter.structured-data.org</a>
             </div>
@@ -80,6 +78,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <div id="info" class="rightElement">
+    <p><b>Introduction:</b> <a href="doc/Embed_HTML5_and_Microdata_Into_NewsNL-G2.html">
+            Why using HTML5 polyglot + schema.org as the content format in NewsML-G2 is a good choice
+        </a>
+    </p>
     <p>
         <b>How it works:</b> The validation is performed in three independent steps:
     </p>
@@ -106,6 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         Microdata.
         Please remember to add the right doctype definition to your XHTML document to make the validator recognize
         this is a polyglot HTML5 document (&lt;!DOCTYPE html&gt;)
+    </p>
     <ul>
         <li>
             <b>Polyglot HTML5 validation</b>
@@ -114,13 +117,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </li>
         <li>
             <b>Microdata validation</b>
-            <a href="https://developers.google.com/structured-data/testing-tool/" target="_blank">Google Testing
+            <a href="https://developers.google.com/structured-data/testidata-ng-tool/" target="_blank">Google Testing
                 Tool</a>,
             <a href="https://webmaster.yandex.com/microtest.xml" target="_blank">Yandex Structured Data Validator</a>,
             <a href="http://www.bing.com/toolbox/markup-validator" target="_blank">Bing Markup Validator (requires
                 login)</a>
         </li>
     </ul>
+
     <p>
         <b>Want to Contribute?</b>
         Feel free to checkout the project from <a href="https://github.com/arasix/newsmlvalidator" target="_blank">GitHub</a>,
@@ -138,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </i>
     </p>
 
-    <p><i>&copy; <a href="mailto:stefan@aptoma.com">Stefan Grunert, 2015</a></i></p>
+    <p><i>© <a href="mailto:stefan@aptoma.com">Stefan Grunert, 2015</a></i></p>
 </div>
 
 </body>

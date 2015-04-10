@@ -1,9 +1,0 @@
-{
-    "name": "drlibcalc",
-    "dependencies": {
-        "jquery": "2.1.1",
-        "jquery-ui": "1.10.4",
-        "angular": "~1.2.23",
-        "bootstrap": "~3.3.1"
-    }
-}

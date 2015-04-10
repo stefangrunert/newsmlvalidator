@@ -22,19 +22,19 @@ body {
     font-family: Ubuntu;
 }
 
-h1 {
+h1.main-headline {
     font-size:30px;
     color: #3c546f;
     margin-bottom: 24px;
 
 }
 
-h1 b {
+h1.main-headline b {
     font-size: 42px;
     margin-right: 12px;
 }
 
-h1 span {
+h1.main-headline span {
     opacity: .4;
 }
 

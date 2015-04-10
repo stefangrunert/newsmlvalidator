@@ -33,7 +33,5 @@ http://www.bing.com/toolbox/markup-validator, Bing Markup Validator
 Feel free to checkout the project, improve it and send me a pull request.
     
 ##Installation
-Dependencies: Webserver running PHP with Curl, Bower
+Dependencies: HTTP server running PHP
 
-To install JS and CSS libraries, run 
-    'bower install'
