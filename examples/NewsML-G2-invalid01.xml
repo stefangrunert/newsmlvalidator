@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <newsMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://iptc.org/std/nar/2006-10-01/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:vg="http://www.vg.no" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:newsml="http://iptc.org/std/nar/2006-10-01/">
-  <header>
+  <header animal="cow">
     <sent>2015-03-31T15:10:47.000+02:00</sent>
     <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
   </header>

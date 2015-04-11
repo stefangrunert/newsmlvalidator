@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class NewsMLValidation
  *
@@ -11,6 +12,7 @@ class NewsMLValidationResult
     public $hasError = false;
     public $errorMsg = '';
     public $responseBody = '';
+    public $errors = [];
 
     public function __construct($validatedPart)
     {

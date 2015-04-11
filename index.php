@@ -51,12 +51,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="validationDetails {{validation.id}}">
             <div data-ng-repeat="validationResult in validation.res.validationResults">
                 <span data-ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
-
                 <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
                     passed: {{validationResult.passed}}
                 </div>
                 <div class="message">
                     {{validationResult.message}}
+                </div>
+                <div data-ng-repeat="error in validationResult.errors" class="error">
+                    <div>
+                        <span class="key">Error: </span>
+                        <span class="value">{{error.message}}</span>
+                    </div>
+                    <div>
+                        <span class="key">XML: </span>
+                        <span class="value">{{error.markup}}</span>
+                    </div>
+                    <div>
+                        <span class="key">Reference: </span>
+                        <span class="value">line {{error.line}}, column {{error.column}}</span>
+                    </div>
                 </div>
 
             </div>

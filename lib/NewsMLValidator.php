@@ -55,17 +55,25 @@ class NewsMLValidator
     {
         $schema = file_get_contents(dirname(__FILE__) . "/../xsd/NewsML-G2_2.12-spec-All-Power.xsd");
         $newsMLValidation = new NewsMLValidationResult('NewsML-G2');
+        libxml_use_internal_errors(true);
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($newsML);
         $res = $dom->schemaValidateSource($schema);
+
         if ($res == false) {
-            $error = libxml_get_last_error();
-            $fileA = mbsplit("\n", $newsML);
             $newsMLValidation->hasError = true;
-            $m = $error->message;
-            $m .= ", " . $error->line;
-            $m .= ', ';
-            $m .= (isset($fileA[$error->line - 1]) ? trim($fileA[$error->line - 1]) : '');
+            $fileA = mbsplit("\n", $newsML);
+            $errors = libxml_get_errors();
+            $numErrors = count($errors);
+            foreach($errors as $error) {
+                $error->markup = (isset($fileA[$error->line - 1]) ? trim($fileA[$error->line - 1]) : '');
+                $newsMLValidation->errors[] = $error;
+            }
+            $m = $numErrors . " error";
+            if ($numErrors > 1) {
+                $m .= "s";
+            }
+            $m .= " detected";
             $newsMLValidation->errorMsg = $m;
         }
         return $newsMLValidation;

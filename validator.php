@@ -30,6 +30,9 @@ foreach ($validations as $validation) {
         $numErrors++;
         $validationResult['passed'] = false;
         $validationResult['message'] = $validation->errorMsg;
+        if (!empty($validation->errors)) {
+            $validationResult['errors'] = $validation->errors;
+        }
     } else {
         $validationResult['passed'] = true;
     }
