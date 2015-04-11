@@ -1,0 +1,16 @@
+<div id="intro">
+    <b>
+        <a href="" data-ng-click="loadExample('01', true)">load valid NewsML-G2 example</a> or
+        <a href="" data-ng-click="loadExample('01', false)">load invalid NewsML-G2 example</a>
+    </b>
+    <br/>
+    ...or paste NewsML-G2 document, containing polyglot HTML5 + Microdata within the contentSet/inlineXML into the form
+    below:
+</div>
+
+<div>
+    <textarea data-ng-model="payload" id="newsmlPayload" class="{{validationActive ? 'active' : 'inactive'}}"></textarea>
+    <br/>
+    <button data-ng-click="validate()" id="submitValidation" class="{{!payload ? 'disabled':''}}">Validate Document</button>
+    <button data-ng-if="payload" data-ng-click="clear()" id="clearForm">Clear Form</button>
+</div>
