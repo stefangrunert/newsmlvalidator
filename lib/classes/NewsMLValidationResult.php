@@ -8,7 +8,7 @@
 class NewsMLValidationResult
 {
     public $passed;
-    public $errors = [];
+    public $errors = array();
     public $detections;
     public $guid = '';
     public $validatedStandard = '';

@@ -30,11 +30,9 @@ $response->numErrors = $numErrors;
 $response->validationResults = $validations;
 
 // set response headers
-http_response_code($numErrors > 0 && $isAPIRequest ? 400 : 200);
-
+$statusCode = $numErrors > 0 && $isAPIRequest ? 400 : 200;
+header('HTTP/1.1: ' . $statusCode);
 header('Content-type: ' . $contentType);
-//header('Content-type: text/xml');
-
 
 // output the validation result
 die($contentType == 'application/json' ? json_encode($response) : XMLSerializer::generateValidXmlFromObj($response));
