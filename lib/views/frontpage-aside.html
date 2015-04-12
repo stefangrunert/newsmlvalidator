@@ -1,6 +1,12 @@
 <p>
     <b>Introduction:</b>
-    <blockquote>"The NewsML-G2 standard provides state-of-the-art XML format metadata to combine rich functionality, ease of use, compactness and compatibility with the Semantic Web" [<a href="https://iptc.org/standards/newsml-g2/" target="_blank">IPTC</a>]</blockquote>
+</p>
+<blockquote>
+    "The NewsML-G2 standard provides state-of-the-art XML format metadata to combine rich functionality, ease of use,
+    compactness and compatibility with the Semantic Web"
+    [<a href="https://iptc.org/standards/newsml-g2/" target="_blank">IPTC</a>]
+</blockquote>
+<p>
     Read about <a href="doc/Embed_HTML5_and_Microdata_Into_NewsNL-G2.html">
     why using HTML5 polyglot + schema.org as the content format in NewsML-G2 is a good choice, and how it validates</a>
 </p>
@@ -8,15 +14,19 @@
     <b>How it works:</b> The validation is performed in three independent steps:
 </p>
 <ol>
-    <li>NewsML-G2 validation based on the XSD's provided by <a href="http://iptc.org/" target="_blank">IPTC</a>. Works with
-    all NewsML-G2 standard versions >= 2.9</li>
+    <li>NewsML-G2 validation based on the XSD's provided by <a href="http://iptc.org/" target="_blank">IPTC</a>. Works
+        with
+        all NewsML-G2 standard versions >= 2.9
+    </li>
     <li>
         <a href="http://www.w3.org/TR/html-polyglot/" target="_blank">Polyglot HTML5</a> and XHTML1.0 validation of the
         inlineXML embedded HTML document within the NewsML-G2 contentSet.
-        Uses the API of <a href="https://validator.nu" target="_blank">https://validator.nu</a>. The XHTML standard is auto-detected.
+        Uses the API of <a href="https://validator.nu" target="_blank">https://validator.nu</a>. The XHTML standard is
+        auto-detected.
     </li>
     <li>XHTML embedded microdata is sent for validation to the
-        <a href="https://developers.google.com/structured-data/testing-tool/" target="_blank">Google Testing Tool</a>. If the
+        <a href="https://developers.google.com/structured-data/testing-tool/" target="_blank">Google Testing Tool</a>.
+        If the
         service is not available, the content will be sent to
         <a href="http://linter.structured-data.org" target="_blank">Structured Data Linter</a> service instead.
     </li>
@@ -27,16 +37,19 @@
     containing the NewsML-G2 document in the POST body to the same URL as this page has.
     <br/>
     The API responds with HTTP status code 200 for valid documents, and 400 for invalid ones. The response body
-    contains parsable JSON or XML serialized info/error messages. To choose the format, add the appropriate accept header
+    contains parsable JSON or XML serialized info/error messages. To choose the format, add the appropriate accept
+    header
     to your request:
     <br/>
     <code>Accept: application/json</code>
     <br/>
     <code>Accept: text/xml</code>
     <br/>
-    Be aware, the performance of validation (apart from NewsML-G2 which is validated internally) is dependent on external services.
+    Be aware, the performance of validation (apart from NewsML-G2 which is validated internally) is dependent on
+    external services.
     <br/>
-    Partial validation can be performed by adding the "standard" to the service URL parameter with a list comma separated options
+    Partial validation can be performed by adding the "standard" to the service URL parameter with a list comma
+    separated options
     "NewsML", "HTML", "microdata". Example:
     <br/>
     <code>POST http://newsmlvalidator-url/?standard=NewsML,HTML</code>

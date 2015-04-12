@@ -132,7 +132,7 @@ h1.main-headline span {
 }
 
 #intro {
-    margin: 3px 0 24px 0;
+    margin: 3px 0 6px 0;
 }
 
 
@@ -219,7 +219,7 @@ h1.main-headline span {
     height: 64px;
     background-size: contain;
     float: left;
-    margin: 0 12px 6px 0;
+    margin: -12px 12px 6px -12px
 }
 
 .resicon.passed {
