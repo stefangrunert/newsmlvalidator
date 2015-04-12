@@ -6,6 +6,7 @@ $standards = NewsMLValidator::getStandardsFromHTTPRequestParameter(
     isset($_REQUEST['standard']) ? $_REQUEST['standard'] : null
 );
 $isAPIRequest = !isset($_GET['appRequest']);
+$contentType = NewsMLValidator::getRequestedFormat();
 
 // getting the NewsML document from the request
 $payload = trim(file_get_contents("php://input"));
@@ -23,14 +24,17 @@ foreach ($validations as $validation) {
         $numErrors += $validation->numErrors;
     }
 }
-$response = array();
-$response['passed'] = $numErrors === 0;
-$response['numErrors'] = $numErrors;
-$response['validationResults'] = $validations;
+$response = new stdClass();
+$response->passed = $numErrors === 0;
+$response->numErrors = $numErrors;
+$response->validationResults = $validations;
 
 // set response headers
 http_response_code($numErrors > 0 && $isAPIRequest ? 400 : 200);
-header('Content-type: application/json');
+
+header('Content-type: ' . $contentType);
+//header('Content-type: text/xml');
+
 
 // output the validation result
-die(json_encode($response));
+die($contentType == 'application/json' ? json_encode($response) : XMLSerializer::generateValidXmlFromObj($response));

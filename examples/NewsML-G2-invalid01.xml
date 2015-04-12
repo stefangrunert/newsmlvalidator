@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <newsMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://iptc.org/std/nar/2006-10-01/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:vg="http://www.vg.no" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:newsml="http://iptc.org/std/nar/2006-10-01/">
-  <header animal="cow">
+  <header foo="bar">
     <sent>2015-03-31T15:10:47.000+02:00</sent>
     <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
   </header>
   <itemSet>
     <packageItem version="15" standard="NewsML-G2" standardversion="2.12" conformance="power" guid="urn:newsml:aptoma.no:20150330:565616-package">
+        <animal>cow</animal>
       <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
       <itemMeta>
-        <itemClass qcode="ninat:text"/>
+        <itemClass qcode="ninat:composite"/>
         <provider literal="Verdens Gang"/>
         <versionCreated>2015-03-31T15:10:47.000+02:00</versionCreated>
         <firstCreated>2015-03-30T13:47:16.000+02:00</firstCreated>
@@ -121,7 +122,28 @@
             <altId type="gyiid:masterID">dp-image551519-20552167</altId>
           </remoteContent>
         </link>
-
+        <link rel="irel:dependsOn" guidref="urn:newsml:aptoma.no:20150330:20552168-image">
+          <itemClass qcode="ninat:picture"/>
+          <fileName>Flunder.jpg</fileName>
+          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/stor/Flunder.jpg" width="600" height="362" contenttype="image/jpeg" rendition="rnd:web">
+            <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+          </remoteContent>
+          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/mellom/Flunder.jpg" width="450" height="271" contenttype="image/jpeg" rendition="rnd:web">
+            <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+          </remoteContent>
+          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/lite/Flunder.jpg" width="275" height="166" contenttype="image/jpeg" rendition="rnd:web">
+            <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+          </remoteContent>
+          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/panorama/Flunder.jpg" width="600" height="128" contenttype="image/jpeg" rendition="rnd:web">
+            <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+          </remoteContent>
+          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/fact-box-image/Flunder.jpg" width="250" height="151" contenttype="image/jpeg" rendition="rnd:web">
+            <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+          </remoteContent>
+          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/fullsize/Flunder.jpg" width="398" height="240" contenttype="image/jpeg" rendition="rnd:highRes">
+            <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+          </remoteContent>
+        </link>
         <extensions xmlns="http://www.vg.no">
           <department qcode="vgdepartment:vg">
             <name>VG</name>
@@ -173,9 +195,11 @@
             </head>
             <body>
               <article itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
-                <h1 itemprop="headline" data-element-type="headline" data-element-label="Overskrift" data-element-data-type="xml"><p>Bacon</p> ipsum dolor amet pig tail brisket turducken</h1>
+                <h1 itemprop="headline" data-element-type="headline" data-element-label="Overskrift" data-element-data-type="xml">
+                    <p>Bacon ipsum</p> dolor amet pig tail brisket turducken
+                </h1>
                 <div itemprop="description" data-element-type="preamble" data-element-label="Ingress" data-element-data-type="xml">
-                  <p><p>noch ein fehler</p>Short loin frankfurter tail cow.   Tail beef t-bone chicken pork loin  cow.  Picanha meatloaf shank  hamburger, tail flank fatback pastrami  sausage rump.  Flank meatloaf  corned beef shankle sausage salami ball  tip pig bacon biltong t-bone  ribeye fatback porchetta.  Ham doner beef  shoulder pastrami.</p>
+                  <p>Short loin frankfurter tail cow.   <foobar>Tail beef t-bone</foobar> chicken pork loin  cow.  Picanha meatloaf shank  hamburger, tail flank fatback pastrami  sausage rump.  Flank meatloaf  corned beef shankle sausage salami ball  tip pig bacon biltong t-bone  ribeye fatback porchetta.  Ham doner beef  shoulder pastrami.</p>
                 </div>
                 <div itemprop="associatedMedia" data-element-type="leadAsset" data-element-label="Lead Asset" data-element-data-type="xml">
                   <figure itemscope="itemscope" itemtype="http://schema.org/ImageObject">
@@ -190,7 +214,24 @@
                   </figure>
                 </div>
                 <div itemprop="articleBody" data-element-type="body" data-element-label="Brøldtekst" data-element-data-type="xml">
-                  <p>Meatloaf ham hock pig corned beef pork belly, boudin picanha brisket tri-tip t-bone turkey. Cow turducken beef ribs pork belly strip steak flank. Jerky capicola tri-tip tongue pork chop flank. Cupim meatloaf capicola cow turducken, filet mignon pancetta short ribs t-bone strip steak spare ribs. Short loin frankfurter short ribs flank ball tip, sirloin chicken. Ball tip meatball t-bone kielbasa tenderloin bacon rump. Turkey bresaola beef, strip steak pork chop bacon tail ball tip porchetta frankfurter tri-tip.</p>
+
+                  <p>
+                      <span itemprop="dateline">
+
+                          <div itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+                              <span itemprop="streetAddress">
+                                20341 Whitworth Institute
+                                405 N. Whitworth
+                              </span>
+                              <span itemprop="addressLocality">Seattle</span>,
+                              <span itemprop="addressRegion">WA</span>
+                              <span itemprop="postalCode">98052</span>
+                            </div>
+
+
+                           12.mars 2015
+                      </span>
+                      Meatloaf ham hock pig corned beef pork belly, boudin picanha brisket tri-tip t-bone turkey. Cow turducken beef ribs pork belly strip steak flank. Jerky capicola tri-tip tongue pork chop flank. Cupim meatloaf capicola cow turducken, filet mignon pancetta short ribs t-bone strip steak spare ribs. Short loin frankfurter short ribs flank ball tip, sirloin chicken. Ball tip meatball t-bone kielbasa tenderloin bacon rump. Turkey bresaola beef, strip steak pork chop bacon tail ball tip porchetta frankfurter tri-tip.</p>
                   <p>Short loin frankfurter tail cow. Tail beef t-bone chicken pork loin cow. Picanha meatloaf shank hamburger, tail flank fatback pastrami sausage rump. Flank meatloaf corned beef shankle sausage salami ball tip pig bacon biltong t-bone ribeye fatback porchetta. Ham doner beef shoulder pastrami.</p>
                   <p>Ribeye tail tongue, biltong frankfurter picanha cupim ball tip chuck pastrami. Tenderloin kielbasa kevin spare ribs, biltong shoulder flank porchetta rump jerky meatball. Chicken tail tenderloin pork belly picanha jowl, boudin andouille porchetta leberkas landjaeger strip steak. Tenderloin andouille leberkas tail meatball strip steak corned beef shoulder fatback swine pig brisket t-bone. Venison kielbasa pork belly ground round meatloaf meatball frankfurter doner brisket. Meatloaf tri-tip pork loin shank.</p>
                   <figure itemscope="itemscope" itemtype="http://schema.org/ImageObject">
@@ -200,7 +241,7 @@
                       <div itemprop="description">
                         <p>Sie ist flach, flach, flach und fühlt sich auf sandigem Meeresboden am Wohlsten.</p>
                       </div>
-                      <div itemprop="byline">Don Fernando</div>
+                      <div itemprop="author">Don Fernando</div>
                     </figcaption>
                   </figure>
                   <p>Chuck corned beef venison picanha, bacon porchetta ball tip short ribs beef ribs frankfurter meatball. Tail boudin ham hock, meatball shankle kielbasa picanha swine. Strip steak t-bone bacon corned beef. Ground round kielbasa filet mignon, ham tail short loin shankle meatloaf capicola jowl. Pork ham frankfurter tenderloin, jowl chuck short loin kielbasa salami sausage turducken. Pastrami short loin ham, short ribs shank ball tip pork chop leberkas chuck rump prosciutto picanha turducken. Pork biltong chuck ham hock flank, short ribs pork loin chicken boudin tail ground round.</p>
@@ -210,6 +251,200 @@
             </body>
           </html>
         </inlineXML>
+      </contentSet>
+    </newsItem>
+    <newsItem version="15" standard="NewsML-G2" standardversion="2.12" conformance="power" guid="urn:newsml:aptoma.no:20150330:20552166-text">
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
+      <itemMeta>
+        <itemClass qcode="ninat:text"/>
+        <provider literal="Verdens Gang"/>
+        <versionCreated>2015-03-31T15:10:47.000+02:00</versionCreated>
+        <firstCreated>2015-03-30T13:47:16.000+02:00</firstCreated>
+        <pubStatus qcode="stat:withheld"/>
+        <service qcode="drppublication:Vinland">
+          <name>Vinland</name>
+        </service>
+        <title>Foobar</title>
+        <extensions xmlns="http://www.vg.no">
+          <department qcode="vgdepartment:vg">
+            <name>VG</name>
+          </department>
+          <organization qcode="vgorganization:vg">
+            <name>VG</name>
+          </organization>
+        </extensions>
+      </itemMeta>
+      <contentMeta>
+        <contentCreated>2015-03-30T13:47:16.000+02:00</contentCreated>
+        <contentModified>2015-03-31T15:10:47.000+02:00</contentModified>
+        <creator qcode="vguser:aptoma">
+          <name>Aptoma</name>
+        </creator>
+        <contributor role="vgrole:responsible" qcode="vguser:aptoma">
+          <name>Aptoma</name>
+          <personDetails>
+            <contactInfo>
+              <email>drpublish@aptoma.com</email>
+            </contactInfo>
+          </personDetails>
+        </contributor>
+        <subject literal="Nytt" rank="1">
+          <name>Nytt</name>
+        </subject>
+        <subject literal="Fiskeri">
+          <name>Fiskeri</name>
+        </subject>
+        <subject literal="Jakt_og_fiske">
+          <name>Jakt og fiske</name>
+        </subject>
+        <slugline>Foobar</slugline>
+        <description/>
+        <headline>Foobar</headline>
+        <language tag="nb"/>
+        <extensions xmlns="http://www.vg.no">
+          <articlePartType qcode="vgarticleparttype:fakta">
+            <name>Fakta</name>
+          </articlePartType>
+        </extensions>
+      </contentMeta>
+      <contentSet>
+        <inlineXML contenttype="application/xhtml+xml" format="drpdoctype:html5">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+              <meta charset="UTF-8"/>
+              <title>Foobar</title>
+            </head>
+            <body>
+              <article itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
+                <h1 itemprop="headline" data-element-type="headline" data-element-label="Overskrift" data-element-data-type="xml">Foobar</h1>
+                <div itemprop="articleBody" data-element-type="body" data-element-label="Brødtekst" data-element-data-type="xml">
+                  <p>The terms foobar (   /   ˈ   f   uː   b   ɑr  /), fubar, or foo, bar, baz and qux (alternatively, quux) and sometimes norf  [1]  [2]  [3]  [4] and many others  [5]  [6] are sometimes used as  placeholder names (also referred to as  metasyntactic variables) in  computer programming or computer-related documentation.  [7] They have been used to name entities such as  variables,  functions, and  commands  whose exact identity is unimportant and serve only to demonstrate a  concept. The words themselves have no meaning in this usage. Foobar is sometimes used alone; foo, bar, and baz are sometimes used, when multiple entities are needed.</p>
+                  <p>The usage in  computer programming examples and  pseudocode  varies; in certain circles, it is used extensively, but many prefer  descriptive names, while others prefer to use single letters.  Eric S. Raymond has called it an "important hackerism" alongside  kludge and  cruft.  [8]</p>
+                </div>
+              </article>
+            </body>
+          </html>
+        </inlineXML>
+      </contentSet>
+    </newsItem>
+    <newsItem version="15" standard="NewsML-G2" standardversion="2.12" conformance="power" guid="urn:newsml:aptoma.no:20150330:20552167-image">
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
+      <itemMeta>
+        <itemClass qcode="ninat:picture"/>
+        <provider literal="Verdens Gang"/>
+        <versionCreated>2015-03-31T15:10:47.000+02:00</versionCreated>
+        <firstCreated>2015-03-30T13:48:18.000+02:00</firstCreated>
+        <pubStatus qcode="stat:withheld"/>
+        <service qcode="drppublication:Vinland">
+          <name/>
+        </service>
+        <title>Europäische Forelle</title>
+        <extensions xmlns="http://www.vg.no">
+          <department qcode="vgdepartment:vg">
+            <name>VG</name>
+          </department>
+          <organization qcode="vgorganization:vg">
+            <name>VG</name>
+          </organization>
+        </extensions>
+      </itemMeta>
+      <contentMeta>
+        <creator role="vgrol:photographer">
+          <name>Don Alfonso</name>
+        </creator>
+        <headline>Europäische Forelle</headline>
+        <description>Die Bachforelle ist ein fantastisch gutschmeckender Fisch.</description>
+      </contentMeta>
+      <contentSet>
+        <inlineXML contenttype="application/xhtml+xml">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta charset="UTF-8"/>
+              <title>Europäische Forelle</title>
+            </head>
+            <body>
+              <figure itemscope="itemscope" itemtype="http://schema.org/ImageObject">
+                <img itemprop="image" src="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/fullsize/Europaeische_Forelle.jpg" width="841" height="581"/>
+                <figcaption>
+                  <div itemprop="headline">Europäische Forelle</div>
+                  <div itemprop="description">
+                    <p>Die Bachforelle ist ein fantastisch gutschmeckender Fisch.</p>
+                  </div>
+                  <div itemprop="author">Don Alfonso</div>
+                </figcaption>
+              </figure>
+            </body>
+          </html>
+        </inlineXML>
+      </contentSet>
+    </newsItem>
+    <newsItem version="15" standard="NewsML-G2" standardversion="2.12" conformance="power" guid="urn:newsml:aptoma.no:20150330:20552168-image">
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
+      <itemMeta>
+        <itemClass qcode="ninat:picture"/>
+        <provider literal="Verdens Gang"/>
+        <versionCreated>2015-03-31T15:10:47.000+02:00</versionCreated>
+        <firstCreated>2015-03-30T13:50:07.000+02:00</firstCreated>
+        <pubStatus qcode="stat:withheld"/>
+        <service qcode="drppublication:Vinland">
+          <name/>
+        </service>
+        <title>Flunder</title>
+        <extensions xmlns="http://www.vg.no">
+          <department qcode="vgdepartment:vg">
+            <name>VG</name>
+          </department>
+          <organization qcode="vgorganization:vg">
+            <name>VG</name>
+          </organization>
+        </extensions>
+      </itemMeta>
+      <contentMeta>
+        <creator role="vgrol:photographer">
+          <name>Don Fernando</name>
+        </creator>
+        <headline>Flunder</headline>
+        <description>Sie ist flach, flach, flach und fühlt sich auf sandigem Meeresboden am Wohlsten.</description>
+      </contentMeta>
+      <contentSet>
+        <inlineXML contenttype="application/xhtml+xml">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta charset="UTF-8"/>
+              <title>Flunder</title>
+            </head>
+            <body>
+              <figure itemscope="itemscope" itemtype="http://schema.org/ImageObject">
+                <img itemprop="image" src="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/fullsize/Flunder.jpg" width="398" height="240"/>
+                <figcaption>
+                  <div itemprop="headline">Flunder</div>
+                  <div itemprop="description">
+                    <p>Sie ist flach, flach, flach und fühlt sich auf sandigem Meeresboden am Wohlsten.</p>
+                  </div>
+                  <div itemprop="author">Don Fernando</div>
+                </figcaption>
+              </figure>
+            </body>
+          </html>
+        </inlineXML>
+        <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/stor/Flunder.jpg" width="600" height="362" contenttype="image/jpeg" rendition="rnd:web">
+          <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+        </remoteContent>
+        <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/mellom/Flunder.jpg" width="450" height="271" contenttype="image/jpeg" rendition="rnd:web">
+          <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+        </remoteContent>
+        <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/lite/Flunder.jpg" width="275" height="166" contenttype="image/jpeg" rendition="rnd:web">
+          <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+        </remoteContent>
+        <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/panorama/Flunder.jpg" width="600" height="128" contenttype="image/jpeg" rendition="rnd:web">
+          <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+        </remoteContent>
+        <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/fact-box-image/Flunder.jpg" width="250" height="151" contenttype="image/jpeg" rendition="rnd:web">
+          <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+        </remoteContent>
+        <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552168/1/fullsize/Flunder.jpg" width="398" height="240" contenttype="image/jpeg" rendition="rnd:highRes">
+          <altId type="gyiid:masterID">dp-image551526-20552168</altId>
+        </remoteContent>
       </contentSet>
     </newsItem>
   </itemSet>

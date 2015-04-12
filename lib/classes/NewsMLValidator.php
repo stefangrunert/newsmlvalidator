@@ -6,6 +6,7 @@ require "NewsMLValidationRunner.php";
 require "HTMLValidationRunner.php";
 require "MicrodataValidationRunner.php";
 require "CurlService.php";
+require "XMLSerializer.php";
 
 /**
  * Class NewsMLValidator
@@ -15,14 +16,14 @@ require "CurlService.php";
  */
 class NewsMLValidator
 {
+    public static $supportedStandards = array('NewsML', 'HTML', 'Microdata');
+
+
     /**
      * @param string $newsML NewsML-G2 document
      * @param string|null $validationRequest
      * @return array
      */
-    public static $supportedStandards = array('NewsML', 'HTML', 'Microdata');
-
-
     public function run($newsML, $standards)
     {
         $validations = array();
@@ -42,6 +43,9 @@ class NewsMLValidator
                 $guid = $newsItem->getAttribute('guid');
                 $validationRunner = new HTMLValidationRunner();
                 $html = $this->getContentHTML($newsItem);
+                if (empty($html)) {
+                    continue;
+                }
                 $validations[] = $validationRunner->run($html, $guid);
             }
         }
@@ -50,7 +54,11 @@ class NewsMLValidator
         if (in_array('Microdata', $standards)) {
             foreach ($newsItems as $newsItem) {
                 $guid = $newsItem->getAttribute('guid');
-                $html =  '<!DOCTYPE html>'. $this->getContentHTML($newsItem);
+                $html = $this->getContentHTML($newsItem);
+                if (empty($html)) {
+                    continue;
+                }
+                $html =  '<!DOCTYPE html>' . $html;
                 $validationRunner = new MicrodataValidationRunner();
                 $validations[] = $validationRunner->run($html, $guid);
             }
@@ -68,7 +76,13 @@ class NewsMLValidator
     private function getContentHTML(DOMElement $newsItem)
     {
         $dom = $newsItem->ownerDocument;
-        $htmlElement = $this->getNewsMLXpath($dom)->query('descendant::h:html', $newsItem)->item(0);
+        $htmlElement = $this->getNewsMLXpath($dom)->query(
+            'descendant::n:inlineXML[@contenttype="application/xhtml+xml"]/h:html',
+            $newsItem
+        )->item(0);
+        if (! $htmlElement instanceof DOMElement) {
+            return null;
+        }
         return $dom->saveXML($htmlElement);
     }
 
@@ -93,5 +107,23 @@ class NewsMLValidator
             }
         }
         return $standards;
+    }
+
+    public static function getRequestedFormat()
+    {
+        $requestHeaders = getallheaders();
+        $format = 'application/json';
+        $type = false;
+        if (array_key_exists('Accept', $requestHeaders)) {
+            $type = $requestHeaders['Accept'];
+        } elseif (array_key_exists('accept', $requestHeaders)) {
+            $type = $requestHeaders['Accept'];
+        }
+        if ($type) {
+            if (mb_stripos($type, 'xml') !== false) {
+                $format = 'text/xml';
+            }
+        }
+        return $format;
     }
 }

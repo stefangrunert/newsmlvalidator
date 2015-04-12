@@ -1,12 +1,30 @@
 <div data-ng-repeat="validation in validations">
-    <div class="validationResult {{validation.active ? 'active' : 'inactive'}}">
+    <div class="validationResults {{validation.active ? 'active' : 'inactive'}}">
         <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
         <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
         <h4>{{validation.name}}</h4>
+        <div style="clear: both"></div>
 
         <div class="validationDetails {{validation.id}}">
 
-            <div data-ng-repeat="validationResult in validation.res.validationResults">
+            <div data-ng-repeat="validationResult in validation.res.validationResults" class="validationResult">
+
+                <div data-ng-if="validationResult.guid">
+                    <b>NewsItem {{validationResult.guid}}</b>
+                </div>
+
+                <div>
+                    <b>Validation:</b>
+                    <span class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
+                        <span>{{validationResult.passed ? 'Passed' : 'Failed'}}.</span>
+                    </span>
+                    <span>{{validationResult.message}}</span>
+                </div>
+
+                <div class="info">
+                    <b>Service: </b>
+                    <span>{{validationResult.service}}</span>
+                </div>
 
                 <div class="detections">
                     <b>Detections: </b>
@@ -20,40 +38,34 @@
                     </span>
                 </div>
 
-                <span data-ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
-
-                <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
-                    passed: {{validationResult.passed}}
-                </div>
-                <div class="message">
-                    {{validationResult.message}}
-                </div>
                 <div data-ng-repeat="error in validationResult.errors" class="error">
                     <div>
-                        <span class="key">Error: </span>
+                        <b>Error: </b>
                         <span class="value">{{error.message}}</span>
                     </div>
                     <div>
-                        <span class="key">XML: </span>
-                        <span class="value">{{error.markup}}</span>
+                        <b>Markup: </b>
+                        <code class="value">{{error.markup}}</code>
                     </div>
                     <div>
-                        <span class="key">Reference: </span>
+                        <b>Reference: </b>
                         <span class="value">line {{error.line}}, column {{error.column}}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="validationInfo">
-            <div data-ng-if="validation.name == 'NewsML'">
-                NewsML-G2 validation is using
-                <a href="http://dev.iptc.org/G2-Standards" class="disabled" target="_blank">IPTC XSD schema</a>
+            <div data-ng-if="validation.id == 'newsml'">
+                NewsML-G2 validation is using validation schemas by
+                <a href="http://dev.iptc.org/G2-Standards" class="disabled" target="_blank">IPTC</a>
             </div>
-            <div data-ng-if="validation.name == 'Polyglot HTML5'">
+            <div data-ng-if="validation.id == 'html5'">
                 HTML validation provided by <a href="https://validator.nu" target="_blank">https://validator.nu</a>
             </div>
-            <div data-ng-if="validation.name == 'Microdata'">
+            <div data-ng-if="validation.id == 'microdata'">
                 Microdata validation provided by
+                <a href="https://developers.google.com/structured-data/testing-tool/" target="_blank">Google Structured Data Testing Tool</a>
+                or
                 <a href="http://linter.structured-data.org" target="_blank">http://linter.structured-data.org</a>
             </div>
         </div>

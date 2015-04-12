@@ -34,15 +34,12 @@ class NewsMLValidationRunner
                 $error->markup = (isset($fileA[$error->line - 1]) ? trim($fileA[$error->line - 1]) : '');
                 $newsMLValidation->errors[] = $error;
             }
-            $m = $numErrors . " error";
-            if ($numErrors > 1) {
-                $m .= "s";
-            }
-            $m .= " detected";
-            $newsMLValidation->message = $m;
         }
         $newsMLValidation->passed = $numErrors === 0;
         $newsMLValidation->numErrors = $numErrors;
+        $newsMLValidation->hasError = $numErrors > 0;
+        $newsMLValidation->message = NewsMLValidationResult::generateMessage($numErrors);
+        $newsMLValidation->service = "XSD schema by IPTC";
         return $newsMLValidation;
     }
 

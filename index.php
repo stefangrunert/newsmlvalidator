@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body data-ng-app="nmlv" data-ng-controller="nmlvCtrl">
 
-<h1 class="main-headline leftElement"><b>NewsML-G2 Validator</b> <span> + </span> HTML 5 polyglot<span> + </span> Microdata
+<h1 class="main-headline leftElement"><b>NewsML-G2 Validator</b> <span> + (</span> HTML 5 polyglot <span> + </span> Microdata <span> ) || </span> XHTML1.0
 </h1>
 
-<div id="validationForm" class="leftElement">
+<div id="validationForm" class="leftElement {{validationActive ? 'active' : 'inactive'}}"">
 <? include("lib/views/validation-form.html")?>
 </div>
 

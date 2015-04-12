@@ -38,17 +38,11 @@ class HTMLValidationRunner
                 }
             }
         }
-        if ($numErrors > 0) {
-            $newsMLValidation->hasError = true;
-            $m = $numErrors . " error";
-            if ($numErrors > 1) {
-                $m .= "s";
-            }
-            $m .= " detected";
-            $newsMLValidation->message = $m;
-        }
-        $newsMLValidation->passed = $numErrors === 0;
         $newsMLValidation->numErrors = $numErrors;
+        $newsMLValidation->hasError = $numErrors > 0;
+        $newsMLValidation->passed = $numErrors === 0;
+        $newsMLValidation->message = NewsMLValidationResult::generateMessage($numErrors);
+        $newsMLValidation->service = "validator.nu";
         return $newsMLValidation;
     }
 
