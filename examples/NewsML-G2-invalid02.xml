@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <newsMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://iptc.org/std/nar/2006-10-01/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:vg="http://www.vg.no" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:newsml="http://iptc.org/std/nar/2006-10-01/">
-  <header animal="cow">
+  <header>
     <sent>2015-03-31T15:10:47.000+02:00</sent>
     <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
   </header>
@@ -99,29 +99,6 @@
           <name>Vinland</name>
         </service>
         <title>Baconipsumtest</title>
-        <link rel="irel:dependsOn" guidref="urn:newsml:aptoma.no:20150330:20552167-image">
-          <itemClass qcode="ninat:picture"/>
-          <fileName>Europaeische_Forelle.jpg</fileName>
-          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/stor/Europaeische_Forelle.jpg" width="600" height="415" contenttype="image/jpeg" rendition="rnd:web">
-            <altId type="gyiid:masterID">dp-image551519-20552167</altId>
-          </remoteContent>
-          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/mellom/Europaeische_Forelle.jpg" width="450" height="311" contenttype="image/jpeg" rendition="rnd:web">
-            <altId type="gyiid:masterID">dp-image551519-20552167</altId>
-          </remoteContent>
-          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/lite/Europaeische_Forelle.jpg" width="275" height="190" contenttype="image/jpeg" rendition="rnd:web">
-            <altId type="gyiid:masterID">dp-image551519-20552167</altId>
-          </remoteContent>
-          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/panorama/Europaeische_Forelle.jpg" width="600" height="128" contenttype="image/jpeg" rendition="rnd:web">
-            <altId type="gyiid:masterID">dp-image551519-20552167</altId>
-          </remoteContent>
-          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/fact-box-image/Europaeische_Forelle.jpg" width="250" height="173" contenttype="image/jpeg" rendition="rnd:web">
-            <altId type="gyiid:masterID">dp-image551519-20552167</altId>
-          </remoteContent>
-          <remoteContent href="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/fullsize/Europaeische_Forelle.jpg" width="841" height="581" contenttype="image/jpeg" rendition="rnd:highRes">
-            <altId type="gyiid:masterID">dp-image551519-20552167</altId>
-          </remoteContent>
-        </link>
-
         <extensions xmlns="http://www.vg.no">
           <department qcode="vgdepartment:vg">
             <name>VG</name>
@@ -175,7 +152,7 @@
               <article itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
                 <h1 itemprop="headline" data-element-type="headline" data-element-label="Overskrift" data-element-data-type="xml"><p>Bacon</p> ipsum dolor amet pig tail brisket turducken</h1>
                 <div itemprop="description" data-element-type="preamble" data-element-label="Ingress" data-element-data-type="xml">
-                  <p><p>noch ein fehler</p>Short loin frankfurter tail cow.   Tail beef t-bone chicken pork loin  cow.  Picanha meatloaf shank  hamburger, tail flank fatback pastrami  sausage rump.  Flank meatloaf  corned beef shankle sausage salami ball  tip pig bacon biltong t-bone  ribeye fatback porchetta.  Ham doner beef  shoulder pastrami.</p>
+                  <p>Short loin frankfurter tail cow.   Tail beef t-bone chicken pork loin  cow.  Picanha meatloaf shank  hamburger, tail flank fatback pastrami  sausage rump.  Flank meatloaf  corned beef shankle sausage salami ball  tip pig bacon biltong t-bone  ribeye fatback porchetta.  Ham doner beef  shoulder pastrami.</p>
                 </div>
                 <div itemprop="associatedMedia" data-element-type="leadAsset" data-element-label="Lead Asset" data-element-data-type="xml">
                   <figure itemscope="itemscope" itemtype="http://schema.org/ImageObject">

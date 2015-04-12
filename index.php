@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>NewsML + Polyglot HTML5 + Microdata Validator</title>
+    <title>NewsML-G2 Validator</title>
     <meta charset="utf-8"/>
     <link href="lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body data-ng-app="nmlv" data-ng-controller="nmlvCtrl">
 
-<h1 class="main-headline leftElement"><b>3-Step Validator</b> NewsML-G2 <span>-&gt;</span> Polyglot HTML5 <span>-&gt;</span> Microdata
+<h1 class="main-headline leftElement"><b>NewsML-G2 Validator</b> <span> + </span> HTML 5 polyglot<span> + </span> Microdata
 </h1>
 
 <div id="validationForm" class="leftElement">

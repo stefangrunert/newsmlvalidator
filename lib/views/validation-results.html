@@ -1,12 +1,25 @@
 <div data-ng-repeat="validation in validations">
     <div class="validationResult {{validation.active ? 'active' : 'inactive'}}">
-        <div
-                class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
+        <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
         <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
         <h4>{{validation.name}}</h4>
 
         <div class="validationDetails {{validation.id}}">
+
             <div data-ng-repeat="validationResult in validation.res.validationResults">
+
+                <div class="detections">
+                    <b>Detections: </b>
+                    <span>
+                        <span>standard: {{validationResult.detections.standard}}, </span>
+                        <span>version: {{validationResult.detections.version}}, </span>
+                        <span>content-type: {{validationResult.detections.contentType}}, </span>
+                        <span data-ng-if="validation.name == 'NewsML'">conformance: {{validationResult.detections.conformance}}, </span>
+                        <span>used valdation schema: {{validationResult.detections.validationSchema}}</span>
+                        <span data-ng-if="validationResult.detections.versionMismatch">(alternative schema used!)</span>
+                    </span>
+                </div>
+
                 <span data-ng-if="validationResult.guid">processed item <b>{{validationResult.guid}}</b>:</span>
 
                 <div class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
@@ -29,7 +42,6 @@
                         <span class="value">line {{error.line}}, column {{error.column}}</span>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="validationInfo">

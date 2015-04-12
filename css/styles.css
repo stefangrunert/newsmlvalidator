@@ -18,19 +18,33 @@
 }
 
 body {
-    margin: 40px 10%;
+    margin: 40px 3%;
     font-family: Ubuntu;
+    font-size: 1.4em;
+}
+
+
+@media (min-width: 1400px) {
+    body {
+        margin: 40px 6%;
+        font-size: 1.6em;
+    }
+}
+
+@media (min-width: 1921px) {
+    body {
+        margin: 40px 10%;
+    }
 }
 
 h1.main-headline {
-    font-size:30px;
+    font-size:1.6em;
     color: #3c546f;
     margin-bottom: 24px;
-
 }
 
 h1.main-headline b {
-    font-size: 42px;
+    font-size: 1.4em;
     margin-right: 12px;
 }
 
@@ -40,29 +54,32 @@ h1.main-headline span {
 
 #info {
     position: absolute;
-    width: 32%;
+    width: 30%;
     top: 24px;
     right: 3%;
     min-height: 90%;
     background-color: rgba(60, 84, 111, 0.05);
-    padding: 24px;
+    padding: 36px;
     line-height: 26px;
     color: #3c546f;
+}
+
+@media (max-width: 1500px) {
+    #info {
+        width: 100%;
+        position: relative;
+        left: 0px;
+        top: 0px;
+    }
 }
 
 .leftElement {
     width: 65%;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1500px) {
     .leftElement {
         width: 100%;
-    }
-    #info {
-        width: 100%;
-        position: relative;
-        left: 0px;
-        top: 0px;
     }
 }
 
@@ -103,7 +120,7 @@ h1.main-headline span {
 }
 
 #intro b {
-    font-size: 24px;
+    font-size: 1.2em;
 }
 
 #intro a {

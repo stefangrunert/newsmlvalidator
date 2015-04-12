@@ -1,9 +1,12 @@
 #Embedding HTML5 polyglot + schema.org microdata into NewsML-G2
 
 ## Summary
-HTML5 polyglott (aka XHTML5)  extended with schemas for structured data markup in microdata syntax is a powerful data structure for delivering news content in a standardized way. Since HTML5 polyglot documents are valid XML it’s parsable with Xpath and easily to embed them into NewsML-G2 contentSet/inlineXML elements. Both HTML5 polyglot and structured can be validated using validation services. An open question is how a document in the inlineXML element can be identified to be HTML5 polyglot. That is needed for distinct it from XHTML 1.x. An extension of the NewsML-G2 specification might be required.
+XHTML5 (HTML5 polyglot delivered with the content-type header "application/xhtml-xml") extended with schemas for structured data markup in microdata syntax is a powerful data structure for delivering news content in a standardized way. Since HTML5 polyglot documents are valid XML it’s parsable with Xpath and easily to embed them into NewsML-G2 contentSet/inlineXML elements. Both HTML5 polyglot and structured can be validated using validation services. An open question is how a document in the inlineXML element can be identified to be HTML5 polyglot. That is needed for distinct it from XHTML 1.x. An extension of the NewsML-G2 specification might be required.
 
 ## Definitions
+
+### XHTML5
+XHTML5 is a synonym for "HTML5 serialized as XML" It's completely compliant to the W3C specification to do so and it is supported by virtually all common browsers.
 
 ### HTML5 polyglot
 "A document that uses [polyglot markup](http://dev.w3.org/html5/html-polyglot/#dfn-polyglot-markup) is a document that is a stream of bytes that parses into identical document trees ... when processed either as HTML or when processed as XML. Polyglot markup that meets a well-defined set of constraints is interpreted as compatible, regardless of whether it is processed as HTML or as XHTML, per the HTML5 specification. Polyglot markup uses a specific DOCTYPE, namespace declarations, and a specific case—normally lower case but occasionally camel case—for element and attribute names. Polyglot markup uses lower case for certain attribute values. Further constraints include those on void elements, named entity references, and the use of scripts and style.“

@@ -1,55 +1,36 @@
 <?php
-/**
- * Disclaimer: The only purpose of this project is to give a proof of concept about the possibility to validate.
- * (X)HTML5 + Microdata documents embedded in NewsML-G2
- *
- * @author Stefan Grunert, stefan@aptoma.com
- */
+require "lib/classes/NewsMLValidator.php";
 
-require "lib/NewsMLValidator.php";
+// preparing processing parameters
+$standards = NewsMLValidator::getStandardsFromHTTPRequestParameter(
+    isset($_REQUEST['standard']) ? $_REQUEST['standard'] : null
+);
+$isAPIRequest = !isset($_GET['appRequest']);
 
 // getting the NewsML document from the request
 $payload = trim(file_get_contents("php://input"));
-$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : null;
-
 
 // running the validation
 $newsMLValidator = new NewsMLValidator();
-$validations = $newsMLValidator->run($payload, $type);
+$validations = $newsMLValidator->run($payload, $standards);
 
 // assembling the output
-$validationResults = array();
 $hasErrors = false;
 $numErrors = 0;
 foreach ($validations as $validation) {
-    $validationResult = array();
-    $validationResult['validationType'] = $validation->validatedPart;
-    $validationResult['guid'] = $validation->guid;
     if ($validation->hasError) {
         $hasErrors = true;
-        $numErrors++;
-        $validationResult['passed'] = false;
-        $validationResult['message'] = $validation->errorMsg;
-        if (!empty($validation->errors)) {
-            $validationResult['errors'] = $validation->errors;
-        }
-    } else {
-        $validationResult['passed'] = true;
+        $numErrors += $validation->numErrors;
     }
-    $validationResults[] = $validationResult;
 }
 $response = array();
-
-if ($hasErrors) {
-    //http_response_code(400);
-    $response['passed'] = false;
-} else {
-    //http_response_code(200);
-    $response['passed'] = true;
-}
+$response['passed'] = $numErrors === 0;
 $response['numErrors'] = $numErrors;
-$response['validationResults'] = $validationResults;
+$response['validationResults'] = $validations;
 
-// outputting the validation result
+// set response headers
+http_response_code($numErrors > 0 && $isAPIRequest ? 400 : 200);
 header('Content-type: application/json');
+
+// output the validation result
 die(json_encode($response));
