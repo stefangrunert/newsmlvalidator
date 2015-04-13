@@ -18,14 +18,18 @@ $validations = $newsMLValidator->run($payload, $standards);
 // assembling the output
 $hasErrors = false;
 $numErrors = 0;
+$hasStandardElements = false;
 foreach ($validations as $validation) {
+    if ($validation->hasStandardElements) {
+        $hasStandardElements = true;
+    }
     if ($validation->hasError) {
         $hasErrors = true;
         $numErrors += $validation->numErrors;
     }
 }
 $response = new stdClass();
-$response->passed = $numErrors === 0;
+$response->passed = !$hasStandardElements ? null : $numErrors === 0;
 $response->numErrors = $numErrors;
 $response->validationResults = $validations;
 

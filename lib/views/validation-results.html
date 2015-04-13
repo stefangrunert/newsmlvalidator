@@ -1,6 +1,6 @@
 <div data-ng-repeat="validation in validations">
     <div class="validationResults {{validation.active ? 'active' : 'inactive'}}">
-        <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false? 'failed':'hidden'}}"></div>
+        <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false ? 'failed':'hidden'}}"></div>
         <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
         <h4>{{validation.name}}</h4>
         <div style="clear: both"></div>
@@ -13,45 +13,75 @@
                     <b>NewsItem {{validationResult.guid}}</b>
                 </div>
 
-                <div>
-                    <b>Validation:</b>
-                    <span class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
-                        <span>{{validationResult.passed ? 'Passed' : 'Failed'}}.</span>
-                    </span>
-                    <span>{{validationResult.message}}</span>
+                <div data-ng-if="validationResult.hasStandardElements">
+
+                    <!-- Validation result -->
+                    <div>
+                        <b>Validation:</b>
+                        <span class="status {{validationResult.passed ? 'valid' : 'invalid'}}">
+                            <span>{{validationResult.passed ? 'Passed' : 'Failed'}}.</span>
+                        </span>
+                        <span>{{validationResult.message}}</span>
+                    </div>
+
+                    <div class="info">
+                        <b>Service: </b>
+                        <span>{{validationResult.service}}</span>
+                    </div>
+
+                    <div class="detections">
+                        <b>Detections: </b>
+                        <span>
+                            <span>standard: {{validationResult.detections.standard}}, </span>
+                            <span>version: {{validationResult.detections.version}}, </span>
+                            <span>content-type: {{validationResult.detections.contentType}}, </span>
+                            <span data-ng-if="validation.name == 'NewsML'">conformance: {{validationResult.detections.conformance}}, </span>
+                            <span>used valdation schema: {{validationResult.detections.validationSchema}}</span>
+                            <span data-ng-if="validationResult.detections.versionMismatch">(alternative schema used!)</span>
+                        </span>
+                    </div>
+
+                    <div data-ng-repeat="error in validationResult.errors" class="error">
+                        <div>
+                            <b>Error: </b>
+                            <span class="value">{{error.message}}</span>
+                        </div>
+                        <div>
+                            <b>Markup: </b>
+                            <code class="value">{{error.markup}}</code>
+                        </div>
+                        <div>
+                            <b>Reference: </b>
+                            <span class="value">line {{error.line}}, column {{error.column}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Microdata Analysis -->
+                    <div class="inspections" data-ng-if="validation.id == 'microdata'">
+                        <h4>Microdata Analysis <span>...how search engines understand the structured data from your document</span></h4>
+                        <div class="inspection" data-ng-repeat="inspection in validationResult.inspections">
+                            <div class="inspection-type" data-ng-repeat="node in inspection.nodes">
+                                &nbsp; <b>{{node.type.pred}}:</b> {{node.type.value}}
+                                <div class="inspection-type" data-ng-repeat="property in node.properties">
+                                    &nbsp; &nbsp; <b>{{property.pred}}: </b>{{property.value}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="! validationResult.hasStandardElements">
+                    <div>
+                        <b>Validation:</b>
+                        <span class="status bypassed">
+                            <span>bypassed.</span>
+                        </span>
+                        <span>{{validationResult.message}}</span>
+                    </div>
                 </div>
 
-                <div class="info">
-                    <b>Service: </b>
-                    <span>{{validationResult.service}}</span>
-                </div>
 
-                <div class="detections">
-                    <b>Detections: </b>
-                    <span>
-                        <span>standard: {{validationResult.detections.standard}}, </span>
-                        <span>version: {{validationResult.detections.version}}, </span>
-                        <span>content-type: {{validationResult.detections.contentType}}, </span>
-                        <span data-ng-if="validation.name == 'NewsML'">conformance: {{validationResult.detections.conformance}}, </span>
-                        <span>used valdation schema: {{validationResult.detections.validationSchema}}</span>
-                        <span data-ng-if="validationResult.detections.versionMismatch">(alternative schema used!)</span>
-                    </span>
-                </div>
 
-                <div data-ng-repeat="error in validationResult.errors" class="error">
-                    <div>
-                        <b>Error: </b>
-                        <span class="value">{{error.message}}</span>
-                    </div>
-                    <div>
-                        <b>Markup: </b>
-                        <code class="value">{{error.markup}}</code>
-                    </div>
-                    <div>
-                        <b>Reference: </b>
-                        <span class="value">line {{error.line}}, column {{error.column}}</span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="validationInfo">

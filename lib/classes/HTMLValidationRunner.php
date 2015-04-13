@@ -12,6 +12,13 @@ class HTMLValidationRunner
     {
         $newsMLValidation = new NewsMLValidationResult('XHTML');
         $newsMLValidation->guid = $guid;
+        if (empty($html)) {
+            $newsMLValidation->hasStandardElements = false;
+            $newsMLValidation->message = "No HTML content element detected in NewsItem.";
+            return $newsMLValidation;
+        } else {
+            $newsMLValidation->hasStandardElements = true;
+        }
         $docProps = DocumentDetector::detectHTML($html);
         $newsMLValidation->detections = $docProps;
         if (! DocumentDetector::isSupportedHTMLStandard($docProps->standard)) {
@@ -19,6 +26,7 @@ class HTMLValidationRunner
             $newsMLValidation->message = "HTML document type not supported or not correctly detected";
             return $newsMLValidation;
         }
+
         $validatorUrl = "https://validator.nu/?out=json";
         $validatorUrl .= "&preset=" . urlencode(DocumentDetector::validateNuPreset($docProps->standard));
         $html = "<!DOCTYPE " . DocumentDetector::doctypeDeclaration($docProps->standard) . ">" . $html;

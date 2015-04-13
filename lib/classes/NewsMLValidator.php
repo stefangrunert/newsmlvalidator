@@ -2,6 +2,7 @@
 require "DocumentDetector.php";
 require "DocumentProperties.php";
 require "NewsMLValidationResult.php";
+require "MicrodataValidationResult.php";
 require "NewsMLValidationRunner.php";
 require "HTMLValidationRunner.php";
 require "MicrodataValidationRunner.php";
@@ -43,9 +44,6 @@ class NewsMLValidator
                 $guid = $newsItem->getAttribute('guid');
                 $validationRunner = new HTMLValidationRunner();
                 $html = $this->getContentHTML($newsItem);
-                if (empty($html)) {
-                    continue;
-                }
                 $validations[] = $validationRunner->run($html, $guid);
             }
         }

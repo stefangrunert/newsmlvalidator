@@ -7,11 +7,12 @@
  */
 class NewsMLValidationResult
 {
+    public $validatedStandard = '';
+    public $hasStandardElements = true;
     public $passed;
     public $errors = array();
     public $detections;
     public $guid = '';
-    public $validatedStandard = '';
     public $hasError = false;
     public $numErrors = 0;
     public $message = '';

@@ -25,7 +25,7 @@ class MicrodataValidationRunner
         $mdLinterUrl = "http://linter.structured-data.org";
         $mdLint =CurlService::curl($mdLinterUrl, 'POST', $mdLinterPayload, "application/json");
         $mdLintObject = json_decode($mdLint['body']);
-        $newsMLValidation = new NewsMLValidationResult('Microdata');
+        $newsMLValidation = new MicrodataValidationResult('Microdata');
         $newsMLValidation->guid = $guid;
         $numErrors = 0;
         if (!empty ($mdLintObject->messages)) {
@@ -67,8 +67,9 @@ class MicrodataValidationRunner
         if (empty($result)) {
             throw new Exception("JSON error");
         }
-        $newsMLValidation = new NewsMLValidationResult('Microdata');
+        $newsMLValidation = new MicrodataValidationResult('Microdata');
         $newsMLValidation->guid = $guid;
+        $newsMLValidation->inspections = $result->tripleGroups;
         $numErrors = 0;
         if (!empty ($result->errors)) {
             foreach($result->errors as $ve) {
@@ -79,7 +80,6 @@ class MicrodataValidationRunner
                     rsort($ve->args);
                     $path = join('/', $ve->args);
                 }
-
                 $error->message =  $path . ': ' .  $ve->errorType;
                 $error->line = '1';
                 $error->column = $ve->begin . ' - '. $ve->end;

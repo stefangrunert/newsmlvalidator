@@ -183,6 +183,9 @@ h1.main-headline span {
 .validationResult .status.invalid {
     color: #c50000;
 }
+.validationResult .status.bypassed {
+    color: #9ea088;
+}
 
 .validationInfo {
     padding: 6px;
@@ -228,4 +231,33 @@ h1.main-headline span {
 
 .resicon.failed {
     background-image: url("gfx/error.png");
+}
+
+.inspections {
+    background-color: #d9eddb;
+    padding: 18px;
+    margin: 0 0 0 12px;
+}
+
+.inspections h4 {
+    font-size: 1.4em;
+}
+
+.inspections h4 span {
+    font-size: .8em;
+    font-style: italic;
+}
+
+.inspections .inspection {
+    margin: 0 0 12px 0;
+}
+
+
+.inspections .inspection-type {
+}
+
+
+.inspections .inspection b {
+    color: #396235;
+    font-weight: bold;
 }
