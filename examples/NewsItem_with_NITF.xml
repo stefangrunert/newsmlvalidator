@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<newsItem guid="urn:newsml:acmenews.com:20141121:US-FINANCE-FED"
+	version="3"
+	standard="NewsML-G2"
+	standardversion="2.18"
+	conformance="power"
+	xml:lang="en-GB">
+	<catalogRef
+		href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_25.xml" />
+	<catalogRef href="http://www.example.com/newsml-g2/catalog.enews_2.xml" />
+	<rightsInfo>
+		<copyrightHolder uri="http://www.example.com/about.html#copyright" >
+			<name>Example Enews LLP</name>
+		</copyrightHolder>
+		<copyrightNotice>
+			(c) Copyright 2014 Example Enews LLP, all rights reserved
+		</copyrightNotice>
+		<usageTerms>
+			Not for use outside the United States
+		</usageTerms>
+	</rightsInfo>
+	<itemMeta>
+		<itemClass qcode="ninat:text" />
+		<provider qcode="nprov:REUTERS" />
+		<versionCreated>2014-11-21T16:25:32-05:00</versionCreated>
+		<firstCreated>2010-10-18T13:12:21-05:00</firstCreated>
+		<embargoed>2014-10-23T12:00:00Z</embargoed>
+  	<pubStatus qcode="stat:usable" />
+		<service qcode="svc:uknews">
+			<name>UK News Service</name>
+		</service>
+		<edNote>
+			Note to editors: STRICTLY EMBARGOED. Not for public release until 12noon
+			on Wednesday, October 23.
+		</edNote>
+		<signal qcode="sig:update" />
+		<link rel="irel:seeAlso"
+			href="http://www.example.com/video/20081222-PNN-1517-407624/index.html"/>
+	</itemMeta>
+	<contentMeta>
+		<contentCreated>2014-11-21T15:21:06-05:00</contentCreated>
+		<contentModified>2014-11-21T16:22:45-05:00</contentModified>
+		<located type="cptype:city" qcode="geo:345678">
+			<name>Berlin</name>
+			<broader type="cptype:statprov" qcode="prov:2365">
+				<name>Berlin</name>
+			</broader>
+			<broader type="cptype:country" qcode="iso3155-ia2:DE">
+				<name>Germany</name>
+			</broader>
+		</located>
+		<creator uri="http://www.example.com/staff/mjameson" >
+			<name>Meredith Jameson</name>
+		</creator>
+		<infoSource uri="http://www.example.com" />
+		<subject type="cpnat:abstract" qcode="medtop:04000000">
+			<name xml:lang="en-GB">economy, business and finance</name>
+		</subject>
+		<subject type="cpnat:abstract" qcode="medtop:20000523">
+			<name xml:lang="en-GB">labour market</name>
+			<name xml:lang="de">Arbeitsmarkt</name>
+			<broader qcode="medtop:04000000" />
+		</subject>
+		<genre qcode="genre:interview">
+			<name xml:lang="en-GB">Interview</name>
+		</genre>
+		<slugline>US-Finance-Fed</slugline>
+		<headline> Fed to halt QE to avert "bubble"</headline>
+	</contentMeta>
+	<contentSet>
+	<inlineXML contenttype="application/nitf+xml">
+		<nitf xmlns="http://iptc.org/std/NITF/2006-10-18/" xsi:schemaLocation="http://iptc.org/std/NITF/2006-10-18/ XSD/NITF/3.5/specification/nitf-3-5.xsd">
+			<body>
+				<body.head>
+					<hedline>
+						<hl1>Arizona Diamondbacks (29-23) at Philadelphia Phillies
+							(26-24), 7:05p.m.</hl1>
+					</hedline>
+					<byline>
+						<byttl>Sports Network</byttl>
+					</byline>
+					<abstract>
+						<p>A pair of teams coming off big weekend sweeps will square off
+							Tonight at Citizens Bank Park, where the Philadelphia Phillies
+							welcome the Arizona Diamondbacks for the start of a three-game
+							series.</p>
+					</abstract>
+				</body.head>
+				<body.content>
+					<p>(Sports Network) - With the Philadelphia Phillies picking
+						up momentum after their three-game sweep of the Atlanta Braves,
+						and the Arizona Diamondbacks capturing all four of their games
+						against the Houston Astros, tonight's game at Citizen Bank Park
+						looks set to be a clash of the Titans.</p>
+				</body.content>
+			</body>
+		</nitf>
+	</inlineXML>
+	</contentSet>
+</newsItem>

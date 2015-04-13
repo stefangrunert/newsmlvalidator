@@ -9,7 +9,7 @@
 
             <div data-ng-repeat="validationResult in validation.res.validationResults" class="validationResult">
 
-                <div data-ng-if="validationResult.guid">
+                <div data-ng-if="validationResult.guid" class="guid">
                     <b>NewsItem {{validationResult.guid}}</b>
                 </div>
 
@@ -63,7 +63,7 @@
                             <div class="inspection-type" data-ng-repeat="node in inspection.nodes">
                                 &nbsp; <b>{{node.type.pred}}:</b> {{node.type.value}}
                                 <div class="inspection-type" data-ng-repeat="property in node.properties">
-                                    &nbsp; &nbsp; <b>{{property.pred}}: </b>{{property.value}}
+                                    &nbsp; &nbsp; <b>{{property.pred}}: </b>{{property.value | characters: 250}}
                                 </div>
                             </div>
                         </div>

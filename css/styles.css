@@ -83,6 +83,16 @@ h1.main-headline span {
     }
 }
 
+#exampleSelect {
+    height: 40px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#exampleSelect option {
+    padding: 3px 6px;
+}
+
 #newsmlPayload {
     width: 100%;
     height: 400px;
@@ -195,7 +205,7 @@ h1.main-headline span {
 
 .validationResult .error {
     margin: 12px 0 0 12px;
-    padding: 6px;
+    padding: 12px 18px;
     background-color: #f2e3e6;
 }
 
@@ -205,11 +215,12 @@ h1.main-headline span {
     color: #ae2146;
 }
 
-
-
 .validationResult .error > div {
     margin: 0 0 3px 0;
+}
 
+.validationResult .guid {
+    font-size: 1.2em;
 }
 
 .validationResult .error .key {
@@ -235,8 +246,9 @@ h1.main-headline span {
 
 .inspections {
     background-color: #d9eddb;
-    padding: 18px;
+    padding: 12px 18px;
     margin: 12px 0 0 12px;
+    font-size: .9em;
 }
 
 .inspections h4 {

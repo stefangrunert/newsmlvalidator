@@ -14,11 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="lib/vendor/jquery/jquery.min.js"></script>
     <script src="lib/vendor/bootstrap/js/bootstrap.js"></script>
     <script src="lib/vendor/angular/angular.min.js"></script>
+    <script src="lib/vendor/angular/truncate.js"></script>
     <script src="lib/newsmlvalidator.js"></script>
 </head>
 <body data-ng-app="nmlv" data-ng-controller="nmlvCtrl">
 
-<h1 class="main-headline leftElement"><b>NewsML-G2 Validator</b> <span> + (</span> HTML 5 polyglot <span> + </span> Microdata <span> ) || </span> XHTML1.0
+<h1 class="main-headline leftElement">
+    <b>NewsML-G2 Validator</b>
+    <span> + ((</span> HTML 5 polyglot <span> + </span> Microdata <span> ) || </span> XHTML1.0
+    <span>) +  </span> NITF
 </h1>
 
 <div id="validationForm" class="leftElement {{validationActive ? 'active' : 'inactive'}}">
@@ -26,8 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 <br/>
-
-<h4>Validation Results</h4>
 
 <div id="validationResults" class="leftElement">
 <? include("lib/views/validation-results.html")?>

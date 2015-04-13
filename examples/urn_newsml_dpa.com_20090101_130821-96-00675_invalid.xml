@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<newsMessage xmlns="http://iptc.org/std/nar/2006-10-01/" xmlns:h="http://www.w3.org/1999/xhtml">
+   <header>
+      <sent>2013-08-21T16:41:45+02:00</sent>
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
+      <catalogRef href="http://g2.dpa.com/catalog/catalog001.xml"/>
+      <origin>ines</origin>
+      <destination qcode="dpasrv:bdt"/>
+      <destination qcode="dpasrv:ndk"/>
+   </header>
+   <itemSet>
+      <newsItem conformance="power" guid="urn:newsml:dpa.com:20090101:130821-96-00675"
+                standard="NewsML-G2"
+                standardversion="2.14"
+                version="2"
+                xml:lang="de">
+         <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
+         <catalogRef href="http://g2.dpa.com/catalog/catalog001.xml"/>
+         <rightsInfo>
+            <copyrightHolder qcode="nprov:dpa">
+               <name xml:lang="en-GB">Deutsche Presse-Agentur GmbH</name>
+               <definition>
+			dpa - Deutsche Presse Agentur GmbH
+			<br/>
+			Handelsregister Hamburg, HRB 68431
+		</definition>
+            </copyrightHolder>
+            <copyrightNotice>Copyright 2013, dpa (www.dpa.de). Alle Rechte vorbehalten</copyrightNotice>
+            <usageTerms>Nutzung nur nach schriftlicher Vereinbarung mit der dpa</usageTerms>
+         </rightsInfo>
+         <itemMeta>
+            <itemClass qcode="ninat:text">
+               <name xml:lang="en-GB">Text Item(s)</name>
+            </itemClass>
+            <provider qcode="nprov:dpa">
+               <name xml:lang="en-GB">Deutsche Presse-Agentur GmbH</name>
+            </provider>
+            <versionCreated>2013-08-21T16:41:43+02:00</versionCreated>
+            <pubStatus qcode="stat:usable">
+               <name xml:lang="en-GB">Usable</name>
+            </pubStatus>
+            <generator versioninfo="5.29.1.16883">ines-g2-exporter</generator>
+            <profile versioninfo="2.0.0">ines/text</profile>
+            <service qcode="dpasrv:ndk">
+               <name role="nrol:full">Nachrichtendienst Kinder</name>
+               <name role="nrol:mnemonic">ndk</name>
+            </service>
+            <service qcode="dpasrv:bdt">
+               <name role="nrol:mnemonic">bdt</name>
+            </service>
+            <edNote role="dpaednoterole:genrenote">1330</edNote>
+            <edNote role="dpaednoterole:closingline">dpa er xx z2 wom</edNote>
+            <edNote role="dpaednoterole:localities">[Stade de Gerland](Avenue Jean-Jaurès 353, 69007 Lyon, Frankreich)</edNote>
+            <edNote pubconstraint="dpapconstraint:nonpublic" role="dpaednoterole:dpacontacts">Autor: Emilio Rappold, &lt;rappold.emilio@dpa.com&gt;</edNote>
+            <edNote pubconstraint="dpapconstraint:nonpublic" role="dpaednoterole:dpacontacts">Redaktion: Wolfgang Müller, +49 30 285232234, &lt;sport@dpa.com&gt;</edNote>
+            <edNote role="dpaednoterole:picture">Mit Bild vom 20.08.</edNote>
+         </itemMeta>
+         <contentMeta>
+            <urgency>4</urgency>
+            <located how="howextr:tool" why="why:inferred">
+               <name>Paris</name>
+            </located>
+            <creator qcode="dpa-ad:kraffzick">
+               <name>kraffzick</name>
+            </creator>
+            <contributor qcode="dpa-ad:kraffzick">
+               <name>kraffzick</name>
+            </contributor>
+            <altId environment="dpasrv:bdt" type="dpa7901rendition:iptc7901Id">bdt:0024:4:sp:316:dpa:0025::20130821164209MESZ</altId>
+            <altId environment="dpasrv:ndk" type="dpa7901rendition:iptc7901Id">ndk:0025:4:sp:316:dpa-knd:0025::20130821164209MESZ</altId>
+            <genre qcode="dpatextgenre:26">
+               <name xml:lang="de">Zusammenfassung</name>
+            </genre>
+            <subject qcode="dpacountry:47" rank="1" type="cpnat:geoArea">
+               <name role="nrol:display" xml:lang="de">Frankreich</name>
+               <sameAs qcode="dpageosbj:47" type="cpnat:geoArea">
+                  <name>Frankreich</name>
+               </sameAs>
+               <sameAs qcode="iso3166-1a3:FRA">
+                  <name role="nrol:mnemonic">FRA</name>
+               </sameAs>
+               <sameAs qcode="afxgeo:FRA">
+                  <name role="nrol:full" xml:lang="en">France</name>
+                  <name role="nrol:mnemonic">FRA</name>
+               </sameAs>
+               <sameAs qcode="iso3166-1a2:FR">
+                  <name role="nrol:mnemonic">FR</name>
+               </sameAs>
+            </subject>
+            <subject qcode="dpasubject:832" rank="1" type="dpatype:dpasubject">
+               <name xml:lang="de">Fußball</name>
+               <sameAs qcode="medtop:20001065">
+                  <name xml:lang="de">Fußball</name>
+               </sameAs>
+            </subject>
+            <keyword rank="1">Champions League</keyword>
+            <keyword rank="2">San Sebastian</keyword>
+            <keyword rank="3">Lyon</keyword>
+            <subject qcode="dpacat:sp" type="dpatype:category">
+               <name xml:lang="de">Sport</name>
+               <name role="nrol:mnemonic" xml:lang="de">sp</name>
+               <sameAs qcode="dparessort:sp">
+                  <name role="nrol:mnemonic" xml:lang="de">sp</name>
+               </sameAs>
+            </subject>
+            <headline rank="1">Nach Revanche gegen Lyon: San Sebastián vor Champions-League-Comeback</headline>
+            <dateline how="howextr:tool" why="why:inferred">Paris (dpa) - </dateline>
+            <creditline>dpa</creditline>
+            <description role="drol:teaser">San Sebastián steht vor einem Comeback in der Champions League. Beim 2:0 in Lyon avancierte ausgerechnet Antoine Griezmann zum Helden. Als Jugendlicher war er von Lyon als zu klein ausgemustert worden.</description>
+            <subject literal="ID0E4D" type="cpnat:poi">
+               <name>Stade de Gerland, 353 Avenue Jean Jaurès, 69007 Lyon, Frankreich</name>
+            </subject>
+            <language tag="de"/>
+         </contentMeta>
+         <assert qcode="dpapconstraint:nonpublic">
+            <name xml:lang="de">nicht öffentlich</name>
+         </assert>
+         <assert literal="ID0E4D">
+            <POIDetails>
+               <position latitude="45.7235828" longitude="4.8290449"/>
+               <address>
+                  <line role="nrol:display">Stade de Gerland</line>
+                  <line role="nrol:full">353 Avenue Jean Jaurès, 69007 Lyon, Frankreich</line>
+                  <locality role="dpalocalityrole:locality">
+                     <name>Lyon</name>
+                  </locality>
+                  <area role="dpaarearole:subarea">
+                     <name>Département Rhône</name>
+                  </area>
+                  <country qcode="dpacountry:47" type="cpnat:geoArea">
+                     <name role="nrol:display" xml:lang="de">Frankreich</name>
+                     <sameAs qcode="iso3166-1a2:FR">
+                        <name role="nrol:mnemonic">FR</name>
+                     </sameAs>
+                     <sameAs qcode="dpageosbj:47">
+                        <name>Frankreich</name>
+                     </sameAs>
+                     <sameAs qcode="iso3166-1a3:FRA">
+                        <name role="nrol:mnemonic">FRA</name>
+                     </sameAs>
+                     <sameAs qcode="afxgeo:FRA">
+                        <name role="nrol:full" xml:lang="en">France</name>
+                        <name role="nrol:mnemonic">FRA</name>
+                     </sameAs>
+                  </country>
+               </address>
+            </POIDetails>
+         </assert>
+         <contentSet>
+            <inlineXML contenttype="application/xhtml+xml" wordcount="316">
+               <html xmlns="http://www.w3.org/1999/xhtml">
+                  <head>
+                     <title>Nach Revanche gegen Lyon: San Sebastián vor Champions-League-Comeback</title>
+                  </head>
+                  <body>
+                     <p>
+                         <p>Fake error</p>
+
+                        <span class="dateline">Paris (dpa) - </span>Nach zehnjähriger Abstinenz steht Real Sociedad San Sebastián vor einem Champions-League-Comeback. Der 2:0-Sieg des spanischen Fußballclubs am Dienstag im Qualifikations-Hinspiel bei Olympique Lyon versetzte die Medien daheim in Jubel: «Spektakulär!», schrieb am Mittwoch die Zeitung «El Mundo», während das Sportblatt «Mundo Deportivo» die beiden Treffer zu Recht als «Meisterwerke» feierte. «Wir haben eine tolle Leistung gezeigt, wir spielen überall auf Sieg, aber wir sind gegen Lyon noch nicht durch», warnte Real-Trainer Jagoba Arrasate.</p>
+                     <p>Bevor der Schweizer Nationalstürmer Haris Seferovic mit einer 30-Meter-Rakete fünf Minuten nach der Pause alles klar machte, hatte ausgerechnet der Franzose Antoine Griezmann die Basken in der 17. Minute mit einem herrlichen Seitfallzieher aus 15 Metern auf die Siegerstraße gebracht. Als 13-Jähriger war der Lyon-Fan bei einem Test von Olympique-Jugendtrainern als «zu klein und zierlich» abgewiesen worden. In der Stunde der Genugtuung blieb das 22 Jahre alte 68-Kilo-Leichtgewicht bescheiden: «Ich habe nur draufgehalten, so wie beim Spiel mit meinen Kumpels auf dem Bolzplatz», sagte er.</p>
+                     <p>Auch für San Sebastián schlug vor 40 000 Zuschauern im Stade Gerland die Stunde der Revanche, hatte doch Lyon die Blau-Weißen in der Saison 2003/2004 bei der letzten Champions-League-Teilnahme im Achtelfinale aus dem Wettbewerb geworfen. OL droht derweil das zweite Quali-Scheitern nacheinander, nachdem man zuvor neunmal in Serie zumindest das Achtelfinale der Königsklasse erreicht hatte.</p>
+                     <p>Die 20 Millionen Euro Garantieeinnahmen aus der Champions League hätte der französische Serienmeister der Jahre 2002 bis 2008 dabei bitter nötig. Clubboss Jean-Michel Aulas fährt einen strengen Sparkurs. Er ließ im Sommer teure Profis wie Anthony Réveillère und Lisandro López gehen und gab nur 800 000 Euro für Linksaußen Gaël Danic aus. In der Ligue 1 ist das junge Team nach zwei Runden immerhin Leader, Meister Paris liegt bereits vier Punkte zurück. Trainer Rémi Garde gibt daher die Hoffnung auch in der Königsklasse noch nicht auf: «Die Aufgabe in San Sebastián wird nun sehr schwer sein, aber nichts ist unmöglich.»</p>
+                  </body>
+               </html>
+            </inlineXML>
+         </contentSet>
+      </newsItem>
+   </itemSet>
+</newsMessage>

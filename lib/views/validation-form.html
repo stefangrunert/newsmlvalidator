@@ -1,10 +1,11 @@
 <div id="intro">
     Try the validator:
-        <a href="" data-ng-click="loadExample('01', true, validate)">load valid NewsML-G2 example</a> or
-        <a href="" data-ng-click="loadExample('01', false, validate)">load invalid NewsML-G2 example</a>
-    <br/>
-    ...or paste a NewsML-G2 document, containing polyglot HTML5 + Microdata or XHTML1.0 within the NewsItem's contentSet/inlineXML into the form
-    below:
+    <select id="exampleSelect" data-ng-options="o.name for o in options" data-ng-model="selectedOption" ng-change="loadExample(validate)">
+    </select>
+    <br />
+    <br />
+    ...or paste a NewsML-G2 document, containing polyglot HTML5 + Microdata, XHTML1.0 or NITF within the NewsItem's
+    contentSet/inlineXML:
 </div>
 
 <div>
