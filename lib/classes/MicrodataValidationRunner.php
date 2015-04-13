@@ -9,28 +9,56 @@ class MicrodataValidationRunner
      * @return NewsMLValidationResult
      */
 
-    public function run($html, $guid)
+    public function run(DOMElement $newsItem, $guid)
     {
+        $html = HTMLValidationRunner::getContentHTML($newsItem);
+        $newsMLValidation = new MicrodataValidationResult('Microdata');
+        $newsMLValidation->guid = $guid;
+
+        if (empty($html)) {
+            $newsMLValidation->hasStandardElements = false;
+            $newsMLValidation->message = "No HTML content element detected in NewsItem.";
+            return $newsMLValidation;
+        }
+
+        if (!$this->containsMicrodata($html)) {
+            $newsMLValidation->hasStandardElements = false;
+            $newsMLValidation->message = "No microdata detected within the HTML document.";
+            return $newsMLValidation;
+        } else {
+            $newsMLValidation->hasStandardElements = true;
+        }
+
+        $docProps = DocumentDetector::detectHTML($html);
+        $newsMLValidation->detections = $docProps;
+        $html = "<!DOCTYPE " . DocumentDetector::doctypeDeclaration($docProps->standard) . ">" . $html;
         try {
-            return $this->runGoogleTestingTool($html, $guid);
+            return $this->runGoogleTestingTool($html, $newsMLValidation);
         } catch (Exception $e) {
             // fallback when Google validation fails
-            return $this->runLinterStructuredData($html, $guid);
+            return $this->runLinterStructuredData($html, $newsMLValidation);
         }
     }
 
-    public function runLinterStructuredData($html, $guid)
+    private function containsMicrodata($html)
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($html);
+        $xp = new DOMXPath($dom);
+        $q ="//*/@itemscope | //*/@itemprop | //*/@itemtype";
+        return $xp->query($q)->length > 0;
+    }
+
+    public function runLinterStructuredData($html, $newsMLValidation)
     {
         $mdLinterPayload = json_encode(array("content" => $html));
         $mdLinterUrl = "http://linter.structured-data.org";
-        $mdLint =CurlService::curl($mdLinterUrl, 'POST', $mdLinterPayload, "application/json");
+        $mdLint = CurlService::curl($mdLinterUrl, 'POST', $mdLinterPayload, "application/json");
         $mdLintObject = json_decode($mdLint['body']);
-        $newsMLValidation = new MicrodataValidationResult('Microdata');
-        $newsMLValidation->guid = $guid;
         $numErrors = 0;
         if (!empty ($mdLintObject->messages)) {
-            foreach($mdLintObject->messages as $lintError) {
-                $numErrors ++;
+            foreach ($mdLintObject->messages as $lintError) {
+                $numErrors++;
                 $error = new stdClass();
                 $error->message = $lintError;
                 $error->line = 'n.a.';
@@ -54,7 +82,7 @@ class MicrodataValidationRunner
         return $newsMLValidation;
     }
 
-    public function runGoogleTestingTool($html, $guid)
+    public function runGoogleTestingTool($html, $newsMLValidation)
     {
         $payload = "html=" . urlencode($html);
         $url = "https://structured-data-testing-tool.developers.google.com/sdtt/web/validate";
@@ -67,22 +95,20 @@ class MicrodataValidationRunner
         if (empty($result)) {
             throw new Exception("JSON error");
         }
-        $newsMLValidation = new MicrodataValidationResult('Microdata');
-        $newsMLValidation->guid = $guid;
         $newsMLValidation->inspections = $result->tripleGroups;
         $numErrors = 0;
         if (!empty ($result->errors)) {
-            foreach($result->errors as $ve) {
-                $numErrors ++;
+            foreach ($result->errors as $ve) {
+                $numErrors++;
                 $error = new stdClass();
                 $path = ";";
                 if (!empty($ve->args)) {
                     rsort($ve->args);
                     $path = join('/', $ve->args);
                 }
-                $error->message =  $path . ': ' .  $ve->errorType;
+                $error->message = $path . ': ' . $ve->errorType;
                 $error->line = '1';
-                $error->column = $ve->begin . ' - '. $ve->end;
+                $error->column = $ve->begin . ' - ' . $ve->end;
                 $error->markup = mb_substr($html, $ve->begin, $ve->end - $ve->begin);
                 $newsMLValidation->errors[] = $error;
             }

@@ -8,8 +8,9 @@ class HTMLValidationRunner
      * @param string $html HTML document
      * @return NewsMLValidationResult
      */
-    public function run($html, $guid)
+    public function run(DOMElement $newsItem, $guid)
     {
+        $html = self::getContentHTML($newsItem);
         $newsMLValidation = new NewsMLValidationResult('XHTML');
         $newsMLValidation->guid = $guid;
         if (empty($html)) {
@@ -54,4 +55,17 @@ class HTMLValidationRunner
         return $newsMLValidation;
     }
 
+    public static function getContentHTML(DOMElement $newsItem)
+    {
+        $dom = $newsItem->ownerDocument;
+        $htmlElement = NewsMLValidator::getNewsMLXpath($dom)->query(
+            'descendant::n:inlineXML[@contenttype="application/xhtml+xml" ' .
+            'or @contenttype="application/xhtml+html"]/h:html',
+            $newsItem
+        )->item(0);
+        if (! $htmlElement instanceof DOMElement) {
+            return null;
+        }
+        return $dom->saveXML($htmlElement);
+    }
 }

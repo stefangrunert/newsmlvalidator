@@ -5,8 +5,7 @@ class DocumentDetector
 
     public static function detectNewsML($newsML)
     {
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->loadXML($newsML);
+        $dom = self::loadNewsMLDom($newsML);
         $xp = new DOMXPath($dom);
         $xp->registerNamespace('n', 'http://iptc.org/std/nar/2006-10-01/');
         $xp->registerNamespace('h', 'http://www.w3.org/1999/xhtml');
@@ -23,13 +22,33 @@ class DocumentDetector
         return $documentProperties;
     }
 
+    public static function detectNITF($nitf)
+    {
+        $dom = self::loadNITFDom($nitf);
+        $documentProperties = new DocumentProperties();
+        $schemaLocation = $dom->documentElement->getAttribute('xsi:schemaLocation');
+        if (! empty($schemaLocation)) {
+            $schema = mb_substr($schemaLocation, strrpos($schemaLocation , "/") + 1 );
+            $documentProperties->validationSchema = $schema;
+        } else {
+            $documentProperties->validationSchema = "nitf-3.6.xsd";
+        }
+        $documentProperties->version = str_replace(
+            array('nitf-', '.xsd'),
+            "",
+            $documentProperties->validationSchema
+        );
+        $documentProperties->standard = 'NITF';
+        $documentProperties->doctype = 'xml';
+        $documentProperties->contentType = 'application/nitf+xml';
+        return $documentProperties;
+    }
+
     public static function detectHTML($html)
     {
         $doctype = self::detectHTMLDoctype($html);
         $documentProperties = new DocumentProperties();
         $documentProperties->standard = $doctype;
-        //$documentProperties->standard = 'HTML5';
-        //$documentProperties->version = 'strict';
         $documentProperties->version = $doctype == 'HTML5' ? 'polyglot (XHTML5)' : 'strict';
         $documentProperties->doctype = self::doctypeDeclaration($doctype);
         $documentProperties->contentType = 'application/xhtml+xml';
@@ -97,5 +116,29 @@ class DocumentDetector
         return in_array($standard, self::supportedHTMLStandards());
     }
 
+    public static function loadNewsMLDom($newsML)
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($newsML);
+        $dom->documentElement->setAttribute("xmlns", "http://iptc.org/std/nar/2006-10-01/");
+        $dom->documentElement->setAttribute("xmlns:xhtml", "http://www.w3.org/1999/xhtml");
+        $dom->documentElement->setAttribute("xmlns:xs", "http://www.w3.org/2001/XMLSchema");
+        $dom->documentElement->setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        $dom->documentElement->setAttribute("xmlns:newsml", "http://iptc.org/std/nar/2006-10-01/");
+        $dom->loadXML($dom->saveXML());
+        return $dom;
+    }
+
+    public static function loadNITFDom($nitf)
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($nitf);
+        $dom->documentElement->setAttribute("xmlns", "http://iptc.org/std/nar/2006-10-01/");
+        $dom->documentElement->setAttribute("xmlns:xs", "http://www.w3.org/2001/XMLSchema");
+        $dom->documentElement->setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        $dom->documentElement->setAttribute("xmlns:nitf", "http://iptc.org/std/nar/2006-10-01/");
+        $dom->loadXML($dom->saveXML());
+        return $dom;
+    }
 
 }

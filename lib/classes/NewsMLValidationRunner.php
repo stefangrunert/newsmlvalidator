@@ -20,9 +20,8 @@ class NewsMLValidationRunner
             return $newsMLValidation;
         }
         $newsMLValidation->detections = $docProps;
+        $dom = DocumentDetector::loadNewsMLDom($newsML);
         libxml_use_internal_errors(true);
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->loadXML($newsML);
         $res = $dom->schemaValidateSource($schema);
         $numErrors = 0;
         if ($res == false) {
@@ -76,4 +75,5 @@ class NewsMLValidationRunner
             throw new Exception("XSD file '{$filename}' not found");
         }
     }
+
 }

@@ -8,7 +8,7 @@
     why using HTML5 polyglot + schema.org as the content format in NewsML-G2 is a good choice, and how it validates</a>
 </p>
 <p>
-    <b>How it works:</b> The validation is performed in three independent steps:
+    <b>How it works:</b> The validation is performed in four independent steps:
 </p>
 <ol>
     <li>NewsML-G2 validation based on the XSD's provided by <a href="http://iptc.org/" target="_blank">IPTC</a>. Works
@@ -26,6 +26,10 @@
         If the
         service is not available, the content will be sent to
         <a href="http://linter.structured-data.org" target="_blank">Structured Data Linter</a> service instead.
+    </li>
+    <li>Validation of NITF embedded into the NewsML-G2 contentSet/inlineXML element is performed using <a href="https://iptc.org/standards/nitf/" target="_blank">IPTC's validation schemas</a>.
+        Works with NITF version >= 3.3
+
     </li>
 </ol>
 
@@ -47,7 +51,7 @@
     <br/>
     Partial validation can be performed by adding the "standard" to the service URL parameter with a list comma
     separated options
-    "NewsML", "HTML", "microdata". Example:
+    "NewsML", "HTML", "microdata", "NITF". Example:
     <br/>
     <code>POST http://newsmlvalidator-url/?standard=NewsML,HTML</code>
 </p>

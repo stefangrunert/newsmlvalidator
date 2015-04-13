@@ -6,6 +6,7 @@ require "MicrodataValidationResult.php";
 require "NewsMLValidationRunner.php";
 require "HTMLValidationRunner.php";
 require "MicrodataValidationRunner.php";
+require "NITFValidationRunner.php";
 require "CurlService.php";
 require "XMLSerializer.php";
 
@@ -17,7 +18,7 @@ require "XMLSerializer.php";
  */
 class NewsMLValidator
 {
-    public static $supportedStandards = array('NewsML', 'HTML', 'Microdata');
+    public static $supportedStandards = array('NewsML', 'HTML', 'Microdata', 'NITF');
 
 
     /**
@@ -43,8 +44,7 @@ class NewsMLValidator
             foreach ($newsItems as $newsItem) {
                 $guid = $newsItem->getAttribute('guid');
                 $validationRunner = new HTMLValidationRunner();
-                $html = $this->getContentHTML($newsItem);
-                $validations[] = $validationRunner->run($html, $guid);
+                $validations[] = $validationRunner->run($newsItem, $guid);
             }
         }
 
@@ -52,45 +52,38 @@ class NewsMLValidator
         if (in_array('Microdata', $standards)) {
             foreach ($newsItems as $newsItem) {
                 $guid = $newsItem->getAttribute('guid');
-                $html = $this->getContentHTML($newsItem);
-                if (empty($html)) {
-                    continue;
-                }
-                $html =  '<!DOCTYPE html>' . $html;
                 $validationRunner = new MicrodataValidationRunner();
-                $validations[] = $validationRunner->run($html, $guid);
+                $validations[] = $validationRunner->run($newsItem, $guid);
             }
         }
+
+        // validate NITF
+        if (in_array('NITF', $standards)) {
+            foreach ($newsItems as $newsItem) {
+                $guid = $newsItem->getAttribute('guid');
+                $validationRunner = new NITFValidationRunner();
+                $validations[] = $validationRunner->run($newsItem, $guid);
+            }
+        }
+
         return $validations;
     }
 
-    private function extractNewsItems($newsML)
-    {
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->loadXML($newsML);
-        return $this->getNewsMLXpath($dom)->query('//n:newsItem');
-    }
-
-    private function getContentHTML(DOMElement $newsItem)
-    {
-        $dom = $newsItem->ownerDocument;
-        $htmlElement = $this->getNewsMLXpath($dom)->query(
-            'descendant::n:inlineXML[@contenttype="application/xhtml+xml"]/h:html',
-            $newsItem
-        )->item(0);
-        if (! $htmlElement instanceof DOMElement) {
-            return null;
-        }
-        return $dom->saveXML($htmlElement);
-    }
-
-    private function getNewsMLXpath(DOMDocument $dom)
+    public static function getNewsMLXpath(DOMDocument $dom)
     {
         $xp = new DOMXPath($dom);
         $xp->registerNamespace('n', 'http://iptc.org/std/nar/2006-10-01/');
         $xp->registerNamespace('h', 'http://www.w3.org/1999/xhtml');
+        $xp->registerNamespace('nitf', 'http://iptc.org/std/NITF/2006-10-18/');
         return $xp;
     }
+
+    private function extractNewsItems($newsML)
+    {
+        $dom = DocumentDetector::loadNewsMLDom($newsML);
+        return self::getNewsMLXpath($dom)->query('//n:newsItem');
+    }
+
 
     public static function getStandardsFromHTTPRequestParameter($param)
     {
