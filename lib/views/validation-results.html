@@ -1,5 +1,5 @@
 <div data-ng-repeat="validation in validations">
-    <div class="validationResults {{validation.active ? 'active' : 'inactive'}}">
+    <div class="validationResults {{validation.active ? 'active' : 'inactive'}}  {{validation.res.passed === null? 'hidden': ''}}">
         <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false ? 'failed':'hidden'}}"></div>
         <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
         <h4>{{validation.name}}</h4>
