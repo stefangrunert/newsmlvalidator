@@ -34,7 +34,7 @@ class NewsMLValidationResult
             $m .= " detected.";
             return $m;
         } else {
-            return "Good work! No errors detected.";
+            return "No errors detected.";
         }
     }
 }
