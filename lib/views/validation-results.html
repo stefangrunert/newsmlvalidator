@@ -37,6 +37,12 @@
                             <span>content-type: {{validationResult.detections.contentType}}, </span>
                             <span data-ng-if="validation.name == 'NewsML'">conformance: {{validationResult.detections.conformance}}, </span>
                             <span>used valdation schema: {{validationResult.detections.validationSchema}}</span>
+                            <br/>
+                            <span data-ng-if="validation.name == 'NewsML'">
+                                ->
+                                <a href="xsdviewer.php?versionStandard={{validationResult.detections.version}}" target="_blank">
+                                NewsML-G2 schema documentation
+                            </a></span>
                             <span data-ng-if="validationResult.detections.versionMismatch">(alternative schema used!)</span>
                         </span>
                     </div>

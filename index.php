@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <title>NewsML-G2 Validator</title>
     <meta charset="utf-8"/>
-    <link href="lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script src="lib/vendor/jquery/jquery.min.js"></script>
     <script src="lib/vendor/bootstrap/js/bootstrap.js"></script>
