@@ -71,6 +71,12 @@
                                 <div class="inspection-type" data-ng-repeat="property in node.properties">
                                     &nbsp; &nbsp; <b>{{property.pred}}: </b>{{property.value | characters: 250}}
                                 </div>
+
+                                <ul>
+                                    <li ng-repeat="nodeProperty in node.nodeProperties" ng-include="'proprec.html'"></li>
+
+                                </ul>
+
                             </div>
                         </div>
                     </div>
@@ -90,6 +96,19 @@
 
             </div>
         </div>
+
+        <script type="text/ng-template" id="proprec.html">
+            <b>{{nodeProperty.pred}}</b>({{nodeProperty.target.type.value}}<span data-ng-if="nodeProperty.target.id">, id: {{nodeProperty.target.id}}</span>)
+
+            <span ng-repeat="nodeProperty in nodeProperty.target.properties">
+                <b class="sub">{{nodeProperty.pred}}:</b> {{nodeProperty.value}}
+            </span>
+
+            <ul>
+                <li ng-repeat="nodeProperty in nodeProperties ng-include="'proprec.html'"></li>
+            </ul>
+        </script>
+
         <div class="validationInfo">
             <div data-ng-if="validation.id == 'newsml'">
                 NewsML-G2 validation is using validation schemas by

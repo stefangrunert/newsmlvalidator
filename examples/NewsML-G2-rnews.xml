@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<newsMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://iptc.org/std/nar/2006-10-01/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:newsml="http://iptc.org/std/nar/2006-10-01/">
+  <header>
+    <sent>2015-03-31T15:10:47.000+02:00</sent>
+    <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
+  </header>
+  <itemSet>
+    <newsItem version="15" standard="NewsML-G2" standardversion="2.12" conformance="power" guid="urn:newsml:aptoma.no:20150330:20552165-text">
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_19.xml"/>
+      <itemMeta>
+        <itemClass qcode="ninat:text"/>
+        <provider literal="Foobar"/>
+        <versionCreated>2015-03-31T15:10:47.000+02:00</versionCreated>
+        <firstCreated>2015-03-30T13:47:16.000+02:00</firstCreated>
+        <pubStatus qcode="stat:withheld"/>
+        <title>Baconipsumtest</title>
+      </itemMeta>
+      <contentMeta>
+      </contentMeta>
+      <contentSet>
+        <inlineXML contenttype="application/xhtml+xml">
+            <html xmlns="http://www.w3.org/1999/xhtml" itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
+            <head>
+                <title>Allies Are Split on Goal and Exit Strategy in Libya</title>
+                <meta charset="UTF-8"/>
+                <meta itemprop="description"
+                      content="The questions about the command mirrored the strategic divisions over how the coalition will end the operation."/>
+                <meta itemprop="inLanguage" content="en-US"/>
+                <meta itemprop="thumbnailUrl" content="http://graphics8.nytimes.com/images/common/icons/t_wb_75.gif"/>
+            </head>
+            <body>
+            <article>
+                <h1 itemprop="headline">Allies Are Split on Goal and Exit Strategy in Libya</h1>
+                <div itemprop="alternativeHeadline">NATO Takes Command</div>
+                <div itemprop="associatedMedia">
+                    <figure itemscope="itemscope" itemtype="http://schema.org/ImageObject">
+                        <img itemprop="image"
+                             src="/files/Simple-Sample/libya_sample_reuters.jpg"
+                             width="841" height="581"/>
+                        <figcaption>
+                            <div class="image_credit">Credit:
+                                  <span
+                                          itemprop="creator"
+                                          itemscope="itemscope"
+                                          itemtype="http://schema.org/Person"
+                                          itemid="http://blogs.reuters.com/goran-tomasevic/">
+                                    <span itemprop="name">Goran Tomasevic</span>
+                                  </span>
+                                /
+                                  <span
+                                          itemprop="copyrightHolder sourceOrganization provider"
+                                          itemscope="itemscope"
+                                          itemtype="http://schema.org/Organization"
+                                          itemid="http://www.reuters.com">
+                                    <span itemprop="name">Reuters</span>
+                                  </span>
+                            </div>
+                            <div itemprop="description" class="image_caption">Rebel fighters take cover during a shelling near
+                                Ajdabiyah, Libya on Thursday.
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div
+                        itemprop="creator"
+                        itemscope="itemscope"
+                        itemtype="http://schema.org/Person"
+                        itemid="http://topics.nytimes.com/topics/reference/timestopics/people/m/steven_lee_myers/"
+                        class="byline">By
+                    <span itemprop="name">STEVEN LEE MYERS</span>
+                </div>
+                <div class="publication_date">
+                    <span itemprop="dateline">WASHINGTON</span> |
+                    <meta itemprop="dateCreated" content="2011-03-24"/>
+                    March 24, 2011
+                </div>
+                <div class="article_text">
+                    <p itemprop="articleBody">Having largely succeeded in stopping a rout of Libya's rebels, the inchoate
+                        coalition attacking Col. Muammar el-Qaddafi's forces remains divided over the ultimate
+                        goal - and exit strategy - of what officials acknowledged Thursday would be a military
+                        campaign that could last for weeks.
+                    </p>
+                </div>
+                <div class="legalese">
+                    <p>
+                        <a href="http://www.nytimes.com/content/help/rights/copyright/copyright-notice.html">
+                            © Copyright
+                        </a>
+                        <span itemprop="copyrightYear">2011</span>
+                  <span
+                          itemprop="copyrightHolder provider sourceOrganization"
+                          itemscope="itemscope"
+                          itemtype="http://schema.org/Corporation"
+                          itemid="http://www.nytimes.com">
+                         <span itemprop="name">The New York Times Company</span>
+                        <meta itemprop="tickerSymbol" content="NYSE NYT"/>
+                  </span>
+                    </p>
+                    <p>
+                        <a href="http://www.nytimes.com/ref/membercenter/help/agree.html">Usage Terms</a>
+                    </p>
+                </div>
+            </article>
+            <aside>
+                <section>
+                    <h3>Section</h3>
+                    <div class="tag" itemprop="articleSection">World</div>
+                    <div class="section_head">Tags</div>
+                    <div class="b_module tag_module">
+                        <div>
+                            <div class="tag_head">People</div>
+                            <div
+                                    itemprop="about"
+                                    itemscope="itemscope"
+                                    itemtype="http://schema.org/Person"
+                                    itemid="http://data.nytimes.com/91178019641520997503"
+                                    class="tag tag_first tag_last">
+                                <span itemprop="name">Qaddafi, Muammar el-</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>Discussion</h3>
+                    <div
+                            itemprop="comment"
+                            itemscope="itemscope"
+                            itemtype="http://schema.org/UserComments"
+                            itemid="http://community.nytimes.com/comments/www.nytimes.com/2011/03/25/world/africa/25policy.html?permid=1#comment1">
+                        <div>
+                            "<span itemprop="commentText">
+                                So the question is: Why is Secretary of Defense Hillary Clinton speaking as the Defense Secretary...
+                            </span>"
+                        </div>
+                        <div
+                                itemprop="creator"
+                                itemscope="itemscope"
+                                itemtype="http://schema.org/Person"
+                                itemid="http://timespeople.nytimes.com/view/user/27242827/activities.html">
+                            <a href="http://timespeople.nytimes.com/view/user/27242827/activities.html">
+                                <span itemprop="name">Chuck</span>
+                            </a>
+                            March 25th, 2011 8:27 am
+                        </div>
+                        <meta itemprop="commentTime" content="2011-03-2011T08:27Z"/>
+                    </div>
+                </section>
+            </aside>
+            </body>
+            </html>
+        </inlineXML>
+      </contentSet>
+    </newsItem>
+  </itemSet>
+</newsMessage>
