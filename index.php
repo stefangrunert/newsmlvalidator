@@ -10,11 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>NewsML-G2 Validator</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/styles.css"/>
-    <script src="lib/vendor/jquery/jquery.min.js"></script>
-    <script src="lib/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="lib/vendor/angular/angular.min.js"></script>
-    <script src="lib/vendor/angular/truncate.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-truncate/src/truncate.js"></script>
     <script src="lib/newsmlvalidator.js"></script>
+    <script src="bower_components/ace-builds/src-noconflict/ace.js"></script>
+    <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+
 </head>
 <body data-ng-app="nmlv" data-ng-controller="nmlvCtrl">
 

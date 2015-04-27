@@ -11,15 +11,17 @@ class MicrodataValidationRunner
 
     public function run(DOMElement $newsItem, $guid)
     {
-        $html = HTMLValidationRunner::getContentHTML($newsItem);
+        $htmlElement = HTMLValidationRunner::getContentHTML($newsItem);
         $newsMLValidation = new MicrodataValidationResult('Microdata');
         $newsMLValidation->guid = $guid;
 
-        if (empty($html)) {
+        if (! $htmlElement instanceof DOMElement) {
             $newsMLValidation->hasStandardElements = false;
             $newsMLValidation->message = "No HTML content element detected in NewsItem.";
             return $newsMLValidation;
         }
+        $html = $htmlElement->ownerDocument->saveXML($htmlElement);
+        $newsMLValidation->documentOffsetLine = $htmlElement->getLineNo() - 2;
 
         if (!$this->containsMicrodata($html)) {
             $newsMLValidation->hasStandardElements = false;
@@ -107,7 +109,8 @@ class MicrodataValidationRunner
                     $path = join('/', $ve->args);
                 }
                 $error->message = $path . ': ' . $ve->errorType;
-                $error->line = '1';
+                $line =  substr_count(substr($html, 0, $ve->begin), "\n") + 1;
+                $error->line = $line;
                 $error->column = $ve->begin . ' - ' . $ve->end;
                 $error->markup = mb_substr($html, $ve->begin, $ve->end - $ve->begin);
                 $newsMLValidation->errors[] = $error;

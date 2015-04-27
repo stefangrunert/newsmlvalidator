@@ -1,0 +1,18 @@
+{
+  "name": "newsmlvalidator",
+  "version": "0.0.1",
+  "description": "NewsML-G2 validator",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "2.1.1",
+    "angular": "^1.4",
+    "angular-truncate" : "",
+    "bootstrap": "~3.3.1",
+    "angular-ui-ace": "0.2.3",
+    "ace-builds": "^1"
+  }
+}

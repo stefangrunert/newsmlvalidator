@@ -1,4 +1,4 @@
-@import "../lib/vendor/bootstrap/css/bootstrap.min.css";
+@import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
 
 @font-face {
   font-family: 'Ubuntu';
@@ -20,7 +20,7 @@
 }
 
 body {
-    margin: 40px 3%;
+    margin: 20px 3%;
     font-family: Ubuntu;
     font-size: 1.4em;
 }
@@ -28,7 +28,7 @@ body {
 
 @media (min-width: 1400px) {
     body {
-        margin: 40px 6%;
+        margin: 20px 6%;
         font-size: 1.6em;
     }
 }
@@ -42,11 +42,12 @@ body {
 h1.main-headline {
     font-size:1.6em;
     color: #3c546f;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
+    margin-left: -12px;
 }
 
 h1.main-headline b {
-    font-size: 1.4em;
+    font-size: 1.7em;
     margin-right: 12px;
 }
 
@@ -66,12 +67,13 @@ h1.main-headline span {
     color: #3c546f;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 2000px) {
     #info {
         width: 100%;
         position: relative;
         left: 0px;
         top: 0px;
+        margin-top: 30px;
     }
 }
 
@@ -79,7 +81,7 @@ h1.main-headline span {
     width: 68%;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 2000px) {
     .leftElement {
         width: 100%;
     }
@@ -96,41 +98,49 @@ h1.main-headline span {
 
 #newsmlPayload {
     width: 100%;
-    height: 400px;
-    transition: 1s;
-    transition-property: height;
+    height: 200px;
     background-color: #F5F5F5;
     border: solid #CCC 1px;
     padding: 12px 12px 1px 12px;
     margin-bottom: 6px;
 }
 
-.active #newsmlPayload {
-    height: 80px;
-    transition: 1s;
-    transition-property: height;
-    color: #888;
+
+@media (min-height: 600px) {
+    #newsmlPayload {
+        height: 300px;
+    }
 }
 
-#expandPayloadLink {
-    display: block;
-    visibility: hidden;
-    opacity: 0;
-    float: right;
-    text-align: right;
-    transition: 1s;
+@media (min-height: 700px) {
+    #newsmlPayload {
+        height: 350px;
+    }
 }
 
-.active #expandPayloadLink {
-    visibility: visible;
-    transition: 1s;
-    transition-property: opacity;
-    opacity: 1;
+@media (min-height: 800px) {
+    #newsmlPayload {
+        height: 400px;
+    }
+}
+
+@media (min-height: 900px) {
+    #newsmlPayload {
+        height: 500px;
+    }
+}
+
+@media (min-height: 1000px) {
+    #newsmlPayload {
+        height: 600px;
+    }
 }
 
 #submitValidation {
     width: 200px;
     height: 40px;
+    float: right;
+    margin-right: 12px;
 }
 
 #submitValidation.disabled {
@@ -140,22 +150,44 @@ h1.main-headline span {
 #clearForm {
     width: 120px;
     height: 40px;
+    float: right;
 }
 
 #intro {
     margin: 3px 0 6px 0;
 }
 
-
 #intro a {
     font-size: 1.1em;
     text-decoration: underline;
 }
 
+.validationResultsHeader > div {
+    display: inline-block;
+    background-color: #FFF;
+    margin: 0 3px 0 0;
+    padding: 6px 12px;
+    border: solid #CCC 1px;
+    background-color: #E9E9E9;
+    border-bottom: none;
+
+}
+
+.validationResultsHeader > div.active {
+    background-color: #F5F5F5;
+    border-bottom: none;
+}
+
+.validationResultsHeader a {
+    margin:  0 12px 0 12px;
+    line-height: 48px;
+}
+
 .validationResults {
-    margin: 12px 0;
-    background-color: rgba(60, 84, 111, 0.05);
-    padding: 28px;
+    margin:  -1px 0 20px 0;
+    background-color: #F5F5F5;
+    padding: 12px 24px;
+    border: solid #CCC 1px;
 }
 
 .validationResults.inactive {
@@ -178,14 +210,6 @@ h1.main-headline span {
     font-size: 1.2em;
 }
 
-.loader {
-    width:64px;
-    height: 64px;
-    background-image: url("gfx/loader.gif");
-    background-size: contain;
-    float: left;
-    margin: 0 12px 6px 0;
-}
 
 .validationResult .status {
     color: green;
@@ -229,13 +253,17 @@ h1.main-headline span {
     margin-right: 6px;
 }
 
-.resicon {
-    width: 64px;
-    height: 64px;
+.resicon, .loader {
+    width: 48px;
+    height: 48px;
     background-size: contain;
     float: left;
-    margin: -12px 12px 6px -12px
 }
+
+.loader {
+    background-image: url("gfx/loader.gif");
+}
+
 
 .resicon.passed {
     background-image: url("gfx/done.png");
@@ -277,4 +305,14 @@ h1.main-headline span {
 .inspections .inspection b.sub  {
     font-weight: normal;
     margin: 0 3px 0 3px;
+}
+
+.ace-eclipse .ace_active-line {
+    background-color: rgb(216, 226, 238) !important;
+}
+
+.ace-eclipse .ace_selected-word {
+    border: none !important;
+    background: url(underline.gif) bottom repeat-x !important;
+    background-color: rgb(255, 227, 227) !important;
 }

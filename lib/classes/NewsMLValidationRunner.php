@@ -11,6 +11,7 @@ class NewsMLValidationRunner
     public function run($newsML)
     {
         $newsMLValidation = new NewsMLValidationResult('NewsML-G2');
+        $newsMLValidation->documentOffsetLine = -1;
         try {
             $docProps = DocumentDetector::detectNewsML($newsML);
             $schema = $this->loadNewsMLSchema($docProps);

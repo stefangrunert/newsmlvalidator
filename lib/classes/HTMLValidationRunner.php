@@ -2,24 +2,84 @@
 
 class HTMLValidationRunner
 {
+
+    public function run(DOMElement $newsItem, $guid)
+        {
+            $htmlElement = self::getContentHTML($newsItem);
+            $newsMLValidation = new NewsMLValidationResult('XHTML');
+            $newsMLValidation->guid = $guid;
+            if (!$htmlElement instanceof DOMElement) {
+                $newsMLValidation->hasStandardElements = false;
+                $newsMLValidation->message = "No HTML content element detected in NewsItem.";
+                return $newsMLValidation;
+            } else {
+                $newsMLValidation->hasStandardElements = true;
+            }
+            $html = $htmlElement->ownerDocument->saveXML($htmlElement);
+            $newsMLValidation->documentOffsetLine = $htmlElement->getLineNo() - 2;
+            $docProps = DocumentDetector::detectHTML($html);
+            $newsMLValidation->detections = $docProps;
+            if (! DocumentDetector::isSupportedHTMLStandard($docProps->standard)) {
+                $newsMLValidation->hasError = true;
+                $newsMLValidation->message = "HTML document type not supported or not correctly detected";
+                return $newsMLValidation;
+            }
+            $schema = $this->loadXHTML5Schema($docProps);
+            $dom = DocumentDetector::loadXHTMLDom($html, $docProps);
+            libxml_use_internal_errors(true);
+            $res = $dom->schemaValidateSource($schema);
+            $numErrors = 0;
+            if ($res == false) {
+                $newsMLValidation->hasError = true;
+                $fileA = mbsplit("\n", $html);
+                $errors = libxml_get_errors();
+                $numErrors = count($errors);
+                foreach ($errors as $error) {
+                    $error->markup = (isset($fileA[$error->line - 1]) ? trim($fileA[$error->line - 1]) : '');
+                    $newsMLValidation->errors[] = $error;
+                }
+            }
+            $newsMLValidation->passed = $numErrors === 0;
+            $newsMLValidation->numErrors = $numErrors;
+            $newsMLValidation->hasError = $numErrors > 0;
+            $newsMLValidation->message = NewsMLValidationResult::generateMessage($numErrors);
+            $newsMLValidation->service = "XML schema validation";
+            return $newsMLValidation;
+        }
+
+        private function loadXHTML5Schema(DocumentProperties $docProps)
+        {
+
+            $dir = dirname(__FILE__) . "/../xsd/xhtml";
+            if ($docProps->standard == "HTML5") {
+                $file = "5/xhtml5_nmlg2e.xsd";
+            } else {
+                $file = "1.0/xhtml1-strict.xsd";
+            }
+           return file_get_contents($dir . "/" . $file);
+        }
+
+
     /**
      * Validates HTML documents using validator.nu's API
      *
      * @param string $html HTML document
      * @return NewsMLValidationResult
      */
-    public function run(DOMElement $newsItem, $guid)
+    public function runService(DOMElement $newsItem, $guid)
     {
-        $html = self::getContentHTML($newsItem);
+        $htmlElement = self::getContentHTML($newsItem);
         $newsMLValidation = new NewsMLValidationResult('XHTML');
         $newsMLValidation->guid = $guid;
-        if (empty($html)) {
+        if (!$htmlElement instanceof DOMElement) {
             $newsMLValidation->hasStandardElements = false;
             $newsMLValidation->message = "No HTML content element detected in NewsItem.";
             return $newsMLValidation;
         } else {
             $newsMLValidation->hasStandardElements = true;
         }
+        $html = $htmlElement->ownerDocument->saveXML($htmlElement);
+        $newsMLValidation->documentOffsetLine = $htmlElement->getLineNo() - 2;
         $docProps = DocumentDetector::detectHTML($html);
         $newsMLValidation->detections = $docProps;
         if (! DocumentDetector::isSupportedHTMLStandard($docProps->standard)) {
@@ -66,6 +126,6 @@ class HTMLValidationRunner
         if (! $htmlElement instanceof DOMElement) {
             return null;
         }
-        return $dom->saveXML($htmlElement);
+        return $htmlElement;
     }
 }

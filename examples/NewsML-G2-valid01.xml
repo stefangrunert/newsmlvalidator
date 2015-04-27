@@ -256,11 +256,11 @@
             </head>
             <body>
               <article itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
-                <h1 itemprop="headline" data-element-type="headline" data-element-label="Overskrift" data-element-data-type="xml">Bacon ipsum dolor amet pig tail brisket turducken</h1>
-                <div itemprop="description" data-element-type="preamble" data-element-label="Ingress" data-element-data-type="xml">
+                <h1 itemprop="headline" >Bacon ipsum dolor amet pig tail brisket turducken</h1>
+                <div itemprop="description">
                   <p>Short loin frankfurter tail cow.   Tail beef t-bone chicken pork loin  cow.  Picanha meatloaf shank  hamburger, tail flank fatback pastrami  sausage rump.  Flank meatloaf  corned beef shankle sausage salami ball  tip pig bacon biltong t-bone  ribeye fatback porchetta.  Ham doner beef  shoulder pastrami.</p>
                 </div>
-                <div itemprop="associatedMedia" data-element-type="leadAsset" data-element-label="Lead Asset" data-element-data-type="xml">
+                <div itemprop="associatedMedia">
                   <figure itemscope="itemscope" itemtype="http://schema.org/ImageObject">
                     <img itemprop="image" src="http://drp-dev.aptoma.no/out/images/article/2015/03/30/20552167/1/fullsize/Europaeische_Forelle.jpg" width="841" height="581"/>
                     <figcaption>
@@ -272,7 +272,7 @@
                     </figcaption>
                   </figure>
                 </div>
-                <div itemprop="articleBody" data-element-type="body" data-element-label="Brøldtekst" data-element-data-type="xml">
+                <div itemprop="articleBody">
                   <p>Meatloaf ham hock pig corned beef pork belly, boudin picanha brisket tri-tip t-bone turkey. Cow turducken beef ribs pork belly strip steak flank. Jerky capicola tri-tip tongue pork chop flank. Cupim meatloaf capicola cow turducken, filet mignon pancetta short ribs t-bone strip steak spare ribs. Short loin frankfurter short ribs flank ball tip, sirloin chicken. Ball tip meatball t-bone kielbasa tenderloin bacon rump. Turkey bresaola beef, strip steak pork chop bacon tail ball tip porchetta frankfurter tri-tip.</p>
                   <p>Short loin frankfurter tail cow. Tail beef t-bone chicken pork loin cow. Picanha meatloaf shank hamburger, tail flank fatback pastrami sausage rump. Flank meatloaf corned beef shankle sausage salami ball tip pig bacon biltong t-bone ribeye fatback porchetta. Ham doner beef shoulder pastrami.</p>
                   <p>Ribeye tail tongue, biltong frankfurter picanha cupim ball tip chuck pastrami. Tenderloin kielbasa kevin spare ribs, biltong shoulder flank porchetta rump jerky meatball. Chicken tail tenderloin pork belly picanha jowl, boudin andouille porchetta leberkas landjaeger strip steak. Tenderloin andouille leberkas tail meatball strip steak corned beef shoulder fatback swine pig brisket t-bone. Venison kielbasa pork belly ground round meatloaf meatball frankfurter doner brisket. Meatloaf tri-tip pork loin shank.</p>
@@ -358,8 +358,8 @@
             </head>
             <body>
               <article itemscope="itemscope" itemtype="http://schema.org/NewsArticle">
-                <h1 itemprop="headline" data-element-type="headline" data-element-label="Overskrift" data-element-data-type="xml">Foobar</h1>
-                <div itemprop="articleBody" data-element-type="body" data-element-label="Brødtekst" data-element-data-type="xml">
+                <h1 itemprop="headline">Foobar</h1>
+                <div itemprop="articleBody">
                   <p>The terms foobar (   /   ˈ   f   uː   b   ɑr  /), fubar, or foo, bar, baz and qux (alternatively, quux) and sometimes norf  [1]  [2]  [3]  [4] and many others  [5]  [6] are sometimes used as  placeholder names (also referred to as  metasyntactic variables) in  computer programming or computer-related documentation.  [7] They have been used to name entities such as  variables,  functions, and  commands  whose exact identity is unimportant and serve only to demonstrate a  concept. The words themselves have no meaning in this usage. Foobar is sometimes used alone; foo, bar, and baz are sometimes used, when multiple entities are needed.</p>
                   <p>The usage in  computer programming examples and  pseudocode  varies; in certain circles, it is used extensively, but many prefer  descriptive names, while others prefer to use single letters.  Eric S. Raymond has called it an "important hackerism" alongside  kludge and  cruft.  [8]</p>
                 </div>

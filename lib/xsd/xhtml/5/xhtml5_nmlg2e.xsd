@@ -1,0 +1,10 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:html="http://www.w3.org/1999/xhtml"
+       	   xmlns:svg="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+       	   xmlns:mml="http://www.w3.org/1998/Math/MathML"
+       	   targetNamespace="http://www.w3.org/1999/xhtml"
+       	   elementFormDefault="qualified">
+    <xs:redefine schemaLocation="lib/xsd/xhtml/5/XHTML5-XML-Schema/xhtml5_with_microdata.xsd">
+    </xs:redefine>
+</xs:schema>

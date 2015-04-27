@@ -1,0 +1,3 @@
+[submodule "lib/xsd/xhtml/5/XHTML5-XML-Schema"]
+	path = lib/xsd/xhtml/5/XHTML5-XML-Schema
+	url = git@github.com:arasix/XHTML5-XML-Schema.git

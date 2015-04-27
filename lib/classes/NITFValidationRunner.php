@@ -6,6 +6,7 @@ class NITFValidationRunner
     public function run(DOMElement $newsItem, $guid)
     {
         $newsMLValidation = new NewsMLValidationResult('NITF');
+        $newsMLValidation->documentOffsetLine = $newsItem->getLineNo();
         $newsMLValidation->guid = $guid;
         $nitf = self::getContentNITF($newsItem);
         if (empty($nitf)) {

@@ -17,6 +17,7 @@ class NewsMLValidationResult
     public $numErrors = 0;
     public $message = '';
     public $service;
+    public $documentOffsetLine = 0;
 
 
     public function __construct($validatedStandard)

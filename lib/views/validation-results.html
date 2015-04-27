@@ -1,9 +1,18 @@
-<div data-ng-repeat="validation in validations">
+<div class="validationResultsHeader">
+
+        <div data-ng-repeat="validation in validations"
+             class="{{tabfoo == validation.id? 'active':'' }} {{validation.active ? '' : 'hidden'}}  {{validation.res.passed === null? 'hidden': ''}}">
+            <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false ? 'failed':'hidden'}}"></div>
+            <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
+            <a href="" ng-click="setTabfoo(validation.id)">{{validation.name}}</a>
+        </div>
+
+</div>
+
+
+<div data-ng-repeat="validation in validations" ng-show="tabfoo === validation.id">
     <div class="validationResults {{validation.active ? 'active' : 'inactive'}}  {{validation.res.passed === null? 'hidden': ''}}">
-        <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false ? 'failed':'hidden'}}"></div>
-        <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
-        <h4>{{validation.name}}</h4>
-        <div style="clear: both"></div>
+
 
         <div class="validationDetails {{validation.id}}">
 
@@ -99,13 +108,11 @@
 
         <script type="text/ng-template" id="proprec.html">
             <b>{{nodeProperty.pred}}</b>({{nodeProperty.target.type.value}}<span data-ng-if="nodeProperty.target.id">, id: {{nodeProperty.target.id}}</span>)
-
-            <span ng-repeat="nodeProperty in nodeProperty.target.properties">
+            <span data-ng-repeat="nodeProperty in nodeProperty.target.properties">
                 <b class="sub">{{nodeProperty.pred}}:</b> {{nodeProperty.value}}
             </span>
-
             <ul>
-                <li ng-repeat="nodeProperty in nodeProperties ng-include="'proprec.html'"></li>
+                <li data-ng-repeat="nodeProperty in nodeProperties" data-ng-include="'proprec.html'"></li>
             </ul>
         </script>
 
@@ -115,7 +122,8 @@
                 <a href="http://dev.iptc.org/G2-Standards" class="disabled" target="_blank">IPTC</a>
             </div>
             <div data-ng-if="validation.id == 'html5'">
-                HTML validation provided by <a href="https://validator.nu" target="_blank">https://validator.nu</a>
+                HTML validation based on <a href="https://github.com/arasix/XHTML5-XML-Schema" target="_blank">XHTML5 XML schema</a>
+                derived form <a href="http://grepcode.com/file/repo1.maven.org/maven2/com.googlecode.l10n-maven-plugin/l10n-maven-plugin/1.5/xhtml5.xsd" target="_blank">Olivier Ishacian's draft</a>
             </div>
             <div data-ng-if="validation.id == 'microdata'">
                 Microdata validation provided by

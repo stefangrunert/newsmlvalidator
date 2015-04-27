@@ -12,12 +12,12 @@ if (!isset($_GET['file'])) {
 <head>
     <title><?= isset($_GET['file']) ? $_GET['file'] : '' ?></title>
     <meta charset="utf-8"/>
-    <link href="../lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/styles.css"/>
     <link rel="stylesheet" href="../css/highlightjs/default.css"/>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="../lib/highlight.pack.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/vendor/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>

@@ -52,7 +52,7 @@ class DocumentDetector
         $documentProperties->version = $doctype == 'HTML5' ? 'polyglot (XHTML5)' : 'strict';
         $documentProperties->doctype = self::doctypeDeclaration($doctype);
         $documentProperties->contentType = 'application/xhtml+xml';
-        $documentProperties->validationSchema = 'not available';
+        $documentProperties->validationSchema = $doctype == 'HTML5' ? 'XHTML5' : 'XHTML1.0 strict';
         return $documentProperties;
     }
 
@@ -114,6 +114,14 @@ class DocumentDetector
     public static function isSupportedHTMLStandard($standard)
     {
         return in_array($standard, self::supportedHTMLStandards());
+    }
+
+    public static function loadXHTMLDom($html, DocumentProperties $docProps)
+    {
+        $html = "<!DOCTYPE " . DocumentDetector::doctypeDeclaration($docProps->standard) . ">" . $html;
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($html);
+        return $dom;
     }
 
     public static function loadNewsMLDom($newsML)
