@@ -4,13 +4,13 @@
              class="{{tabfoo == validation.id? 'active':'' }} {{validation.active ? '' : 'hidden'}}  {{validation.res.passed === null? 'hidden': ''}}">
             <div class="resicon {{validation.res.passed === true? 'passed':validation.res.passed === false ? 'failed':'hidden'}}"></div>
             <div class="loader {{validation.loader === true ? 'active' : 'hidden'}}"></div>
-            <a href="" ng-click="setTabfoo(validation.id)">{{validation.name}}</a>
+            <a href="" data-ng-click="setTabfoo(validation.id)">{{validation.name}}</a>
         </div>
 
 </div>
 
 
-<div data-ng-repeat="validation in validations" ng-show="tabfoo === validation.id">
+<div data-ng-repeat="validation in validations" data-ng-show="tabfoo === validation.id">
     <div class="validationResults {{validation.active ? 'active' : 'inactive'}}  {{validation.res.passed === null? 'hidden': ''}}">
 
 
@@ -47,11 +47,6 @@
                             <span data-ng-if="validation.name == 'NewsML'">conformance: {{validationResult.detections.conformance}}, </span>
                             <span>used valdation schema: {{validationResult.detections.validationSchema}}</span>
                             <br/>
-                            <span data-ng-if="validation.name == 'NewsML'">
-                                ->
-                                <a href="xsdviewer.php?standardVersion={{validationResult.detections.version}}" target="_blank">
-                                NewsML-G2 schema documentation
-                            </a></span>
                             <span data-ng-if="validationResult.detections.versionMismatch">(alternative schema used!)</span>
                         </span>
                     </div>
@@ -76,13 +71,13 @@
                         <h4>Microdata Analysis <span>...how search engines understand the structured data from your document</span></h4>
                         <div class="inspection" data-ng-repeat="inspection in validationResult.inspections">
                             <div class="inspection-type" data-ng-repeat="node in inspection.nodes">
-                                &nbsp; <b>{{node.type.pred}}:</b> {{node.type.value}}
+                                 <b>{{node.type.pred}}:</b> {{node.type.value}}
                                 <div class="inspection-type" data-ng-repeat="property in node.properties">
-                                    &nbsp; &nbsp; <b>{{property.pred}}: </b>{{property.value | characters: 250}}
+                                     <b>{{property.pred}}: </b>{{property.value | characters: 250}}
                                 </div>
 
                                 <ul>
-                                    <li ng-repeat="nodeProperty in node.nodeProperties" ng-include="'proprec.html'"></li>
+                                    <li data-ng-repeat="nodeProperty in node.nodeProperties" data-ng-include="'proprec.html'"></li>
 
                                 </ul>
 
@@ -91,7 +86,7 @@
                     </div>
 
                 </div>
-                <div ng-if="! validationResult.hasStandardElements">
+                <div data-ng-if="! validationResult.hasStandardElements">
                     <div>
                         <b>Validation:</b>
                         <span class="status bypassed">

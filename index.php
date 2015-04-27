@@ -3,6 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require dirname(__FILE__) . "/validator.php";
     exit;
 };
+header("Content-type: application/xhtml+xml");
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

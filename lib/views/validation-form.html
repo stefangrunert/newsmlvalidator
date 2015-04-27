@@ -1,12 +1,12 @@
 <div id="intro">
     Paste a NewsML-G2 document into the form below, or
     try one of the examples:
-    <select id="exampleSelect" data-ng-options="o.name for o in options" data-ng-model="selectedOption" ng-change="loadExample(validate)">
+    <select id="exampleSelect" data-ng-options="o.name for o in options" data-ng-model="selectedOption" data-ng-change="loadExample(validate)">
     </select>
 
 </div>
 <div>
-    <div data-ng-model="payload" id="newsmlPayload" ui-ace="{
+    <div data-ng-model="payload" id="newsmlPayload" data-ui-ace="{
       useWrapMode : true,
       showGutter: true,
       theme:'eclipse',
