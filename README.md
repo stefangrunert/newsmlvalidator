@@ -35,5 +35,6 @@ Feel free to checkout the project, improve it and send me a pull request.
     
 ##Installation
 Dependencies: HTTP server running PHP
-Install by running `bower install` from the root directory
+run `bower install` from the root directory
+run `git submodule init` + `git submodule update` to install the XHTML validation XSD's
 
