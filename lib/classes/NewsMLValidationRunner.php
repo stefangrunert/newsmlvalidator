@@ -48,7 +48,12 @@ class NewsMLValidationRunner
         $conformance = ucfirst(strtolower($documentProperties->conformance));
         $version = $documentProperties->version;
         $dirname = dirname(__FILE__) . "/../xsd/newsml/";
-        $filename = "NewsML-G2_{$version}-spec-All-{$conformance}.xsd";
+        if($conformance == null) {
+            $filename = "NewsML-G2_{$version}-spec-All-Core.xsd";
+        } else {
+            $filename = "NewsML-G2_{$version}-spec-All-{$conformance}.xsd";
+        }
+
         if (file_exists($dirname . "/" . $filename)) {
             $documentProperties->validationSchema = $filename;
             return file_get_contents($dirname . "/" . $filename);
@@ -71,6 +76,7 @@ class NewsMLValidationRunner
             if (file_exists($dirname . "/" . $filename)) {
                 $documentProperties->versionMismatch = true;
                 $documentProperties->validationSchema = $filename;
+
                 return file_get_contents($dirname . "/" . $filename);
             }
             throw new Exception("XSD file '{$filename}' not found");
