@@ -1,16 +1,13 @@
-# 3-Step NewsML-G2 + XHTML5 + Microdata Validator
-## Disclaimer:
-The only purpose of this project is showing how validating
-(X)HTML5 + Microdata documents embedded in NewsML-G2 can be done.
-Be aware, the implementation is very minimalistic. There is currently nothing like error handling
+# 4-Step NewsML-G2 + XHTML5 + Microdata + NITF Validator
             
 ## How it works
 The validation is performed in three independent steps:
 1) NewsML-G2 validation based on the XSD provided by IPTC.
-2) HTML validation of the inlineXML embedded XHTML document withing the NewsML-G2 contentSet,
+2) XHTML validation of the inlineXML embedded XHTML document withing the NewsML-G2 contentSet,
 using XML schemas for XHTML1 and XHTML5
 3) Validation of microdata, embedded within the XHTML document, using  Google Structured Data Testing Tool
 https://developers.google.com/structured-data/testing-tool/
+3) Validation of NITF embedded into inlineXML elements
 
 ## Validation API
 Validation without using the graphical interface can be done by sending a POST request,
